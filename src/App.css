@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+  .removeLinkHover { @apply hover:after:w-[0] text-[#808080] }
+}
+
+body{
+  /* background: #19191add; */
+  background: #0a131def;
+  color: white;
+}
+nav ul li {
+    list-style: none;
+    margin: 0 5px;
+  }
+
+  a {
+    padding: 0 5px;
+    position: relative;
+    color: #959393bd;
+    
+  }
+  a::after {
+    content: "";
+    position: absolute;
+    border-radius: 55px;
+    /* background-color: #73a6e1; */
+    background-color: #3f5e8199;
+    height: 3px;
+    width: 0;
+    left: 0px;
+    bottom: 2px;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: rgb(255, 253, 253);
+    /* font-size: 15.6px; */
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+  #paintingForm input {
+    width: 350px;
+    padding: 8px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  #border {
+    width: 350px;
+    padding: 8px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
