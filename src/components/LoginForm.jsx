@@ -3,7 +3,13 @@ import { useForm } from "react-hook-form";
 import { CiCircleInfo } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import Signup from "../pages/Signup";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth } from "../context/contextapi";
 const LoginForm = () => {
+  const {storeToken} = useAuth();
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,56 +26,80 @@ const LoginForm = () => {
       },
       body: JSON.stringify(data),
     });
-    const res = await r.text();
-    console.log(res);
+    const res = await r.json();
+    // console.log(res);
+    if (r.ok) {
+      // console.log(res.authtoken)
+      storeToken(res.authtoken);
+      // const ta= await localStorage.setItem("token", res.authtoken);
+      navigate("/");
+      toast(res.message);
+    } else {
+      toast(res.error ? res.error : res);
+    }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onsubmit)}  id="paintingForm" className="max-w-sm mx-auto mt-8">
+      <form
+        onSubmit={handleSubmit(onsubmit)}
+        id="paintingForm"
+        className="max-w-sm mx-auto mt-8"
+      >
         <div className="mb-4 ">
-        <input
-          type="text"
-          placeholder="Email or Username"
-          name="email"
-          {...register("email", {
-            required: { value: true, message: "Enter valid email!!" },
-          })}
-          className="block w-full px-4 py-2 my-8  border-2 border-gray-300 rounded-b-lg focus:outline-none focus:border-blue-500"
-        />
-        {errors.email && (
-          <div className="text-red-800 text-left text-xs flex py-1  ">
-            <div className="mx-1 py-1">
-              <CiCircleInfo />
+          <input
+            type="text"
+            placeholder="Email or Username"
+            name="email"
+            {...register("email", {
+              required: { value: true, message: "Enter valid email!!" },
+            })}
+            className="block w-full px-4 py-2 my-8  border-2 border-gray-300 rounded-b-lg focus:outline-none focus:border-blue-500"
+          />
+          {errors.email && (
+            <div className="text-red-800 text-left text-xs flex py-1  ">
+              <div className="mx-1 py-1">
+                <CiCircleInfo />
+              </div>
+              {errors.email.message}
             </div>
-            {errors.email.message}
-          </div>
-        )}
+          )}
         </div>
         <div className="">
-        <input
-          type="text"
-          placeholder="Password"
-          name="password"
-          {...register("password", {
-            required: { value: true, message: "Enter Password!" },
-            minLength: { value: 4, message: "enter password at least 4 digit" },
-          })}
-          className="block w-full px-4 py-2 my-7 border-2 border-gray-300 rounded-b-lg focus:outline-none focus:border-blue-500"
-        />
-        {errors.password && (
-          <div className="text-red-800 text-left text-xs flex py-1 ">
-            <div className="mx-1 py-1">
-              <CiCircleInfo />
+          <input
+            type="text"
+            placeholder="Password"
+            name="password"
+            {...register("password", {
+              required: { value: true, message: "Enter Password!" },
+              minLength: {
+                value: 4,
+                message: "enter password at least 4 digit",
+              },
+            })}
+            className="block w-full px-4 py-2 my-7 border-2 border-gray-300 rounded-b-lg focus:outline-none focus:border-blue-500"
+          />
+          {errors.password && (
+            <div className="text-red-800 text-left text-xs flex py-1 ">
+              <div className="mx-1 py-1">
+                <CiCircleInfo />
+              </div>
+              {errors.password.message}
             </div>
-            {errors.password.message}
+          )}
+          <div className="mb-3 relative top-0 ">
+            <h3 className="text-right ">
+              {" "}
+              <NavLink
+                to="/forgotpassword"
+                className={"removeLinkHover text-blue-400 hover:text-blue-800 "}
+              >
+                forgot password?
+              </NavLink>
+            </h3>
           </div>
-        )}
-        <div className="mb-3 relative top-0 ">
-        <h3 className='text-right '> <NavLink to="/forgotpassword" className={'removeLinkHover text-blue-400 hover:text-blue-800 '}>forgot password?</NavLink></h3>
         </div>
-        </div>
-        
+
         <button
           value="submit"
           type="submit"
@@ -79,9 +109,16 @@ const LoginForm = () => {
         </button>
       </form>
       <div className="">
-      <h3 className="my-3 text-center">Don't have an account? <NavLink className={'removeLinkHover text-blue-400 hover:text-blue-800 '} to="/signup" element={<Signup/>}>Signup!</NavLink> </h3>
-
-
+        <h3 className="my-3 text-center">
+          Don't have an account?{" "}
+          <NavLink
+            className={"removeLinkHover text-blue-400 hover:text-blue-800 "}
+            to="/signup"
+            element={<Signup />}
+          >
+            Signup!
+          </NavLink>{" "}
+        </h3>
       </div>
     </div>
   );
