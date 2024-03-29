@@ -2,11 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer components {
   .removeLinkHover {
     @apply hover:after:w-[0] text-[#808080];
   }
  
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 6px;
+  border: 3px solid #555;
 }
 
 body {
@@ -88,3 +99,4 @@ a:hover::after {
     color: white;
   } */
 }
+

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/contextapi";
 
@@ -7,6 +7,29 @@ const Navbar = () => {
 
   const [loginActive, setloginActive] = useState(false);
   const [signupActive, setsignupActive] = useState(false);
+
+  const [isSticky, setisSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll =()=>{
+   if (window.scrollY > 250) {
+    setisSticky(true)
+    
+   }
+   else{
+    setisSticky(false)
+   }
+  }
+  
+   window.addEventListener('scroll',handleScroll)
+    return () => {
+      window.removeEventListener('scroll',handleScroll)
+ 
+    };
+  }, []);
+  
+
+
+  
 
   const handlelogin = () => {
     setloginActive(true);
@@ -51,7 +74,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-between  bg-[#0a131d]   h-[8vh] my-auto items-center shadow-lg shadow-[#191a26a7]  ">
+      <nav className={`flex justify-between  ${isSticky ? 'sticky top-0 bg-gray-800 z-10' : ''} bg-[#0a131d]   h-[8vh] my-auto items-center shadow-lg shadow-[#191a26a7]  `}>
         <div className="logo text-center mx-2 ">
           <NavLink className="removeLinkHover " to="/">
             <h2 className="md:text-xl cursor-pointer text-[#9c6a34] hover:text-[#975d20] md:mx-7 mx-2">

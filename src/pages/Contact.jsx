@@ -1,15 +1,163 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/contextapi";
+
+const defaultContactFormData = {
+  name: " ",
+  email: "",
+  message: "",
+};
 
 const Contact = () => {
-  return (
-    <div>
-        <form action="">
-      <input type="text" placeholder='name' />
-      <input type="text" placeholder='email' />
-      <input type="text" placeholder='description' />
-      </form>
-    </div>
-  )
-}
+  const [contact, setContact] = useState(defaultContactFormData);
 
-export default Contact
+  const [userData, setUserData] = useState(true);
+
+  const { user } = useAuth();
+
+  if (userData && user) {
+    setContact({
+      name: user.name,
+      email: user.email,
+      message:""
+    });
+
+    setUserData(false);
+  }
+
+  // lets tackle our handleInput
+  const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setContact({
+      ...contact,
+      [name]: value,
+    });
+  };
+
+  // handle fomr getFormSubmissionInfo
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+
+      if (response.ok) {
+        setContact(defaultContactFormData);
+        const data = await response.json();
+        console.log(data);
+        alert("Message send successfully");
+      }
+    } catch (error) {
+      alert("Message not send");
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <section className="section-contact">
+        <div className="contact-content container z-0 absolute   ">
+          <h1 className="main-heading  text-left font-serif text-5xl mx-[170px]  ">
+            Contact us
+          </h1>
+          <hr className="w-[10%] mx-[175px] border-2 rounded  border-purple-600 my-1" />
+        </div>
+        <div className=" my-[72px] ">
+          {/* contact page main  */}
+          <div className="container flex ">
+            <div className="w-[400px] mx-[200px] h-[100px] my-[120px]   ">
+              <img
+                className="h-[320px] w-[370px] "
+                src="/img/support.png"
+                alt="we are always ready to help"
+              />
+            </div>
+
+            {/* contact form content actual  */}
+            <section className="section-form my-8 border border-gray-800 px-9 py-8 backdrop-blur-xl bg-gray-900/45 shadow-2xl  rounded-md">
+              <form onSubmit={handleSubmit}>
+                <div className=" flex  flex-col my-2 ">
+                  <label className="mb-1" htmlFor="name">
+                    Username
+                  </label>
+                  <input
+                    className=" bg-gray-800 px-4 w-[390px] py-1 rounded-lg "
+                    type="text"
+                    name="name"
+                    id="name"
+                    autoComplete="off"
+                    value={contact.name}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+
+                <div className="flex flex-col my-4">
+                  <label className="mb-2" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    className="bg-gray-800 px-4 w-[390px] py-1 rounded-lg"
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="off"
+                    value={contact.email}
+                    onChange={handleInput}
+                    required
+                  />
+                </div>
+
+                <div className="flex flex-col my-3">
+                  <label className="mb-2" htmlFor="message">
+                    Message
+                  </label>
+                  <textarea
+                    className="bg-gray-800 px-4 w-[390px] py-1 rounded-lg" 
+                    name="message"
+                    id="message"
+                    autoComplete="off"
+                    value={contact.message}
+                    onChange={handleInput}
+                    required
+                    cols="30"
+                    rows="6"
+                  ></textarea>
+                </div>
+
+                <div className="my-5 ">
+                  <button
+                    className="bg-[#3f5e8199] py-2 px-6 rounded "
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </div>
+        {/* 
+        <section className="mb-3 fixed bottom-0 m-auto w-full  ">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2613173278896!2d73.91411937501422!3d18.562253982539413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b3a3bf%3A0x6f7fdcc8e4d6c77e!2sPhoenix%20Marketcity%20Pune!5e0!3m2!1sen!2sin!4v1697604225432!5m2!1sen!2sin"
+            width="100%"
+            height="70"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </section> */}
+      </section>
+    </>
+  );
+};
+
+export default Contact;

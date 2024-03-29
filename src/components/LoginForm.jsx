@@ -73,7 +73,7 @@ const LoginForm = () => {
             {...register("password", {
               required: { value: true, message: "Enter Password!" },
               minLength: {
-                value: 4,
+                value: 1,
                 message: "enter password at least 4 digit",
               },
             })}
