@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/contextapi";
+import { toast } from "react-toastify";
 
 const defaultContactFormData = {
-  name: " ",
+  username: " ",
   email: "",
   message: "",
 };
@@ -16,9 +17,9 @@ const Contact = () => {
 
   if (userData && user) {
     setContact({
-      name: user.name,
+      username: user.name,
       email: user.email,
-      message:""
+      message: "",
     });
 
     setUserData(false);
@@ -40,7 +41,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch("http://localhost:3000/con/api/contact/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,12 +52,11 @@ const Contact = () => {
       if (response.ok) {
         setContact(defaultContactFormData);
         const data = await response.json();
-        console.log(data);
-        alert("Message send successfully");
+        // console.log(data);
+        toast("Message send successfully");
       }
     } catch (error) {
-      alert("Message not send");
-      console.log(error);
+      toast("Message not send");
     }
   };
 
@@ -81,19 +81,19 @@ const Contact = () => {
             </div>
 
             {/* contact form content actual  */}
-            <section className="section-form my-8 border border-gray-800 px-9 py-8 backdrop-blur-xl bg-gray-900/45 shadow-2xl  rounded-md">
+            <section className="section-form my-8 border border-gray-800 px-9 py-8 backdrop-blur-xl bg-gray-900/45 shadow-2xl shadow-slate-800  rounded-md">
               <form onSubmit={handleSubmit}>
                 <div className=" flex  flex-col my-2 ">
-                  <label className="mb-1" htmlFor="name">
+                  <label className="mb-1" htmlFor="username">
                     Username
                   </label>
                   <input
                     className=" bg-gray-800 px-4 w-[390px] py-1 rounded-lg "
                     type="text"
-                    name="name"
+                    name="username"
                     id="name"
                     autoComplete="off"
-                    value={contact.name}
+                    value={contact.username}
                     onChange={handleInput}
                     required
                   />
@@ -120,7 +120,7 @@ const Contact = () => {
                     Message
                   </label>
                   <textarea
-                    className="bg-gray-800 px-4 w-[390px] py-1 rounded-lg" 
+                    className="bg-gray-800 px-4 w-[390px] py-1 rounded-lg"
                     name="message"
                     id="message"
                     autoComplete="off"
@@ -134,7 +134,7 @@ const Contact = () => {
 
                 <div className="my-5 ">
                   <button
-                    className="bg-[#3f5e8199] py-2 px-6 rounded "
+                    className="bg-[#3f5e8199] py-2 px-6 rounded hover:bg-[#70a2da99] "
                     type="submit"
                   >
                     Submit
