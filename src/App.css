@@ -8,6 +8,17 @@
   .removeLinkHover {
     @apply hover:after:w-[0] text-[#808080];
   }
+  .contactinput {
+    @apply bg-gray-800 px-4 w-[390px] py-1 rounded-lg;
+  }
+  .contactResponsive{
+    @apply contactinput w-[310px] ;
+
+  }
+  .tbd{
+    @apply border py-4 text-center ;
+
+  }
  .outlineinput{
   @apply focus:outline-none  focus:border-blue-500 border-2 bg-gray-800  rounded-b-md;
  }
@@ -31,6 +42,17 @@ body {
   background: #0a131def;
   color: white;
 }
+
+#menu-drop-down {
+  
+  transition:  all 0.3 linear;
+}
+#demo li:hover > #menu-drop-down{
+  visibility: visible;
+  /* opacity: 1; */
+}
+
+
 
 
 
@@ -98,6 +120,7 @@ a:hover::after {
 
 
 
+
 /* phone style */
 @media (max-width: 900px) {
   .bd {
@@ -107,6 +130,9 @@ a:hover::after {
     border-top: none;
     border-left: none;
     border-right: none;
+  }
+  #paintingForm input ,textarea {
+    width: 330px;
   }
   /* #navElement {
     display: none;

@@ -7,7 +7,7 @@ const Project = () => {
   
   return (
     <div >
-      <div className='h-[659px]'>
+      <div className=''>
 
       <Cards data={data}/>
       </div>

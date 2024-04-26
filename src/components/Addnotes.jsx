@@ -31,7 +31,7 @@ const Addnotes = () => {
   };
   return (
     <div>
-      <div className=" w-[400px] h-[550px] border rounded-md m-auto">
+      <div className=" md:w-[400px] md:h-[550px] w-[370px]  border rounded-md m-auto">
         <div className="py-7  ">
           <h1 className="text-3xl text-center mt-2">Add Notes</h1>
         </div>
@@ -44,7 +44,7 @@ const Addnotes = () => {
               <input
                 type="text"
                 name="title"
-                className="outlineinput h-[37px] "
+                className="outlineinput h-[37px]  "
                 {...register("title", {
                   required: { value: true, message: "required title..." },
                   minLength: {

@@ -13,7 +13,7 @@ const Cards = ({ data }) => {
       <div id="service" className=" mx-3 my-2  p-2  rounded-md shadow-lg ">
         <div className="md:text-sm  text-sm text-gray-700 p-2">
           <div className="flex font-mono  justify-center font-thin md:text-3xl text-2xl flex-col">
-            <h1 className="text-center text-5xl hover:text-gray-500 my-8 ">
+            <h1 className="text-center text-5xl hover:text-gray-500 my-8 select-none ">
               Products
             </h1>
           </div>

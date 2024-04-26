@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/contextapi";
+import { FaAngleDown } from "react-icons/fa";
 
 const Navbar = () => {
   const { islogin } = useAuth();
 
+  // login & signup active or not ......
   const [loginActive, setloginActive] = useState(false);
   const [signupActive, setsignupActive] = useState(false);
+  const handlelogin = () => {
+    setloginActive(true);
+    setsignupActive(false);
+  };
+  const handlesignup = () => {
+    setsignupActive(true);
+    setloginActive(false);
+  };
 
+  // issticky navbar styling.......
   const [isSticky, setisSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -24,18 +35,10 @@ const Navbar = () => {
     };
   }, []);
 
-  const handlelogin = () => {
-    setloginActive(true);
-    setsignupActive(false);
-  };
-  const handlesignup = () => {
-    setsignupActive(true);
-    setloginActive(false);
-  };
+  // handale toggle navbar to phone
   const [hamb, sethamb] = useState(false);
 
   const handlemenubar = () => {
-    
     if (!hamb) {
       menu.src = "/img/close.svg";
       sethamb(true);
@@ -58,8 +61,32 @@ const Navbar = () => {
   const handletoggleclick = () => {
     document.querySelectorAll(".humbar").forEach((e) => {
       e.classList.toggle("-left-full");
+
+      handlemenubar();
     });
     sethamb(false);
+  };
+
+  // handle drop-down
+  const [down, setdown] = useState(false);
+  const [dropDownVisible, setdropDownVisible] = useState(false);
+
+  const handleDropDown = () => {
+    setdropDownVisible(!dropDownVisible);
+    var d = document.getElementById("menu-drop-down");
+    if (down) {
+      setdown(false);
+      d.classList.add("hidden");
+    } else {
+      d.classList.remove("hidden");
+      setdown(true);
+    }
+  };
+
+  const hdp = () => {
+    var d = document.getElementById("menu-drop-down");
+    d.classList.add("hidden");
+ 
   };
 
   return (
@@ -89,7 +116,7 @@ const Navbar = () => {
         {/* nav element */}
         <div
           id="navElement"
-          className="humbar -left-full md:left-0  gap-16 list-none  md:mx-6 text-[#808080 ] md:bg-transparent md:w-fit  md:relative md:top-0 md:bg-none md:p-0   md:flex md:h-full absolute right-0 top-[75px]  bg-[#0a131d]  p-8  rounded w-[398px] text-center  h-full "
+          className="humbar -left-full md:left-0  gap-16 list-none  md:mx-6 text-[#808080 ] md:bg-transparent md:w-fit  md:relative md:top-0 md:bg-none md:p-0   md:flex md:h-full absolute right-0 top-[75px]  bg-[#0a131d]  p-8  rounded w-[398px] text-center h-[750px] "
         >
           <NavLink
             onClick={handletoggleclick}
@@ -104,37 +131,104 @@ const Navbar = () => {
               Home
             </li>
           </NavLink>
-          {islogin && (
-            <NavLink
-              onClick={handletoggleclick}
-              className={(e) => {
-                return e.isActive
-                  ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
-                  : "";
-              }}
-              to="/note"
-            >
-              <li className="bd py-5 w-full  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
-                Notes
-              </li>
-            </NavLink>
-          )}
-          {islogin && (
-            <NavLink
-              onClick={handletoggleclick}
-              className={(e) => {
-                return e.isActive
-                  ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
-                  : "";
-              }}
-              to="/passwordapp"
-            >
-              <li className="bd py-5 w-full  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
-                Password_X
-              </li>
-            </NavLink>
-          )}
+          {/* service ....................... */}
           <NavLink
+            onClick={handleDropDown}
+            onMouseEnter={()=>{handleDropDown()}}
+            onMouseLeave={hdp}
+            value="service"
+            className={"removeLinkHover relative  "}
+            to="#"
+          >
+            <li className="bd md:py-3 my-2 w-full  md:border-0    border relative  " >
+              <div className="flex items-center justify-center"  >
+                Services
+                <FaAngleDown />
+              </div>
+
+              {islogin && (
+                <ul
+                  className="md:bg-slate-800 md:absolute top-[9vh] md:w-[10rem] md:translate-x-[-30%] hidden opacity-1  rounded-xl z-10"
+                  id="menu-drop-down"
+                >
+                  {/* passXmanager........................... */}
+                  <NavLink
+                    onClick={handletoggleclick}
+                    className={(e) => {
+                      return e.isActive
+                        ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
+                        : "";
+                    }}
+                    to="/passwordapp"
+                  >
+                    <li className=" py-3 px-8  md:border-0  hover:bg-[#3f5e8199] border">
+                      Password_X
+                    </li>
+                  </NavLink>
+                  {/* notes route..................... */}
+                  <NavLink
+                    value="note"
+                    onClick={handletoggleclick}
+                    className={(e) => {
+                      return e.isActive
+                        ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
+                        : "";
+                    }}
+                    to="/note"
+                  >
+                    <li className=" py-3 px-8  md:border-0  hover:bg-[#3f5e8199] border">
+                      Notes
+                    </li>
+                  </NavLink>
+                  {/* Todo list.................... */}
+                  <NavLink
+                    onClick={handletoggleclick}
+                    className={(e) => {
+                      return e.isActive
+                        ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
+                        : "";
+                    }}
+                    to="/todolist"
+                  >
+                    <li className=" py-3 px-8 m md:border-0  hover:bg-[#3f5e8199] border">
+                      Todo-List
+                    </li>
+                  </NavLink>
+                </ul>
+              )}
+              {!islogin && (
+                <ul
+                  className="md:bg-slate-800 md:absolute top-[9vh] md:w-[15rem] md:translate-x-[-30%] hidden opacity-1  rounded-xl z-0"
+                  id="menu-drop-down"
+                >
+                  <h2 className="text-wrap my-5 text-red-700">
+                    First you login!! then access all Services.....
+                  </h2>
+                  <NavLink
+                    onClick={handletoggleclick}
+                    to="/login"
+                    className={(e) => {
+                      return e.isActive
+                        ? "text-white    after:bg-[#73a6e1] removeLinkHover"
+                        : "removeLinkHover";
+                    }}
+                    // className={"removeLinkHover border-r border-white"}
+                  >
+                    <button
+                      onClick={handlelogin}
+                      className={`md:px-7 md:py-[5px] py-[9px] px-9   bg-[#29303d] hover:bg-slate-500 rounded ${
+                        loginActive ? "bg-slate-500 text-white" : ""
+                      }  `}
+                    >
+                      Login
+                    </button>
+                  </NavLink>
+                </ul>
+              )}
+            </li>
+          </NavLink>
+          <NavLink
+            value="project"
             onClick={handletoggleclick}
             className={(e) => {
               return e.isActive
@@ -147,9 +241,8 @@ const Navbar = () => {
               Projects
             </li>
           </NavLink>
-         
 
-{/* about page */}
+          {/* about page */}
           {/* <NavLink
             onClick={handletoggleclick}
             className={(e) => {
@@ -176,22 +269,9 @@ const Navbar = () => {
               Contact us
             </li>
           </NavLink>
-          <NavLink
-            onClick={handletoggleclick}
-            className={(e) => {
-              return e.isActive
-                ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
-                : "";
-            }}
-            to="/adminpanel"
-          >
-            <li className="bd py-5 w-full  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
-              Admin Panel
-                          </li>
-          </NavLink>
         </div>
         {/* login , sign up  and logout buttons......................*/}
-        <div className=" btn mx-[70px] humbar -left-full md:left-0 gap-2 md:mx-5 md:block md:relative md:top-0 absolute top-[470px]     ">
+        <div className=" btn mx-[65px] humbar -left-full md:left-0 gap-2 md:mx-5 md:block md:relative md:top-0 absolute top-[680px]     ">
           {islogin ? (
             // logout button............
             <NavLink

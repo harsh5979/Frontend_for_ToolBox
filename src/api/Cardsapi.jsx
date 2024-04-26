@@ -8,17 +8,17 @@ const card = [
   },
   {
     id: 2,
-    title: "second box ",
+    title: "Todo-List ",
     dsc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
     image:"../img/p-1.jpg",
-    url:"/login",
+    url:"/todolist",
   },
   {
     id: 3,
-    title: "three box ",
+    title: "PasswordX Manager ",
     dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
     image:"../img/p-1.jpg",
-    url:"/contact",
+    url:"/passwordapp",
   },
   { 
     id: 4,

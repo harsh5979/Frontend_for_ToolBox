@@ -9,6 +9,8 @@ const defaultContactFormData = {
 };
 
 const Contact = () => {
+
+  const {token}=useAuth()
   const [contact, setContact] = useState(defaultContactFormData);
 
   const [userData, setUserData] = useState(true);
@@ -45,6 +47,7 @@ const Contact = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "auth-token": token,
         },
         body: JSON.stringify(contact),
       });
@@ -55,40 +58,45 @@ const Contact = () => {
         // console.log(data);
         toast("Message send successfully");
       }
+      else{
+        toast(data)
+      }
     } catch (error) {
-      toast("Message not send");
+      toast("Message not send. please login!!");
     }
   };
 
   return (
     <>
-      <section className="section-contact">
-        <div className="contact-content container z-0 absolute   ">
-          <h1 className="main-heading  text-left font-serif text-5xl mx-[170px]  ">
+    <div className="grid md:grid-cols-2 grid-rows">
+      {/* <section className="w-[250px]"> */}
+        <div className="contact-content container  absolute top-[139px]   ">
+          <h1 className="main-heading  text-left mx-5  font-serif text-5xl  md:mx-[170px]  ">
             Contact us
           </h1>
           <hr className="w-[10%] mx-[175px] border-2 rounded  border-purple-600 my-1" />
         </div>
-        <div className=" my-[72px] ">
+        {/* <div className=" my-[72px] "> */}
           {/* contact page main  */}
-          <div className="container flex ">
-            <div className="w-[400px] mx-[200px] h-[100px] my-[120px]   ">
+          {/* <div className="md:flex gird grid-cols-2  "> */}
+            <div className="w-[400px] md:mx-[200px] h-[50px] md:my-[120px] mt-[140px] hidden md:block  order-first   ">
               <img
-                className="h-[320px] w-[370px] "
+                className="md:h-[320px] md:w-[350px] md:mx-0 w-[200px] m  h-[150px] "
                 src="/img/support.png"
                 alt="we are always ready to help"
               />
             </div>
+            {/* </section> */}
 
             {/* contact form content actual  */}
-            <section className="section-form my-8 border border-gray-800 px-9 py-8 backdrop-blur-xl bg-gray-900/45 shadow-2xl shadow-slate-800  rounded-md">
-              <form onSubmit={handleSubmit}>
+            <section className="w-[379px] mx-2 mt-[170px] md:mt-[120px] section-form mb-[120px] md:mx-12 border border-gray-800 px-9 py-7 backdrop-blur-xl bg-gray-900/45 shadow-2xl shadow-slate-800 rounded-md md:w-fit ">
+              <form onSubmit={handleSubmit} > 
                 <div className=" flex  flex-col my-2 ">
                   <label className="mb-1" htmlFor="username">
                     Username
                   </label>
                   <input
-                    className=" bg-gray-800 px-4 w-[390px] py-1 rounded-lg "
+                    className=" md:contactinput contactResponsive"
                     type="text"
                     name="username"
                     id="name"
@@ -104,7 +112,7 @@ const Contact = () => {
                     Email
                   </label>
                   <input
-                    className="bg-gray-800 px-4 w-[390px] py-1 rounded-lg"
+                    className="md:contactinput contactResponsive"
                     type="email"
                     name="email"
                     id="email"
@@ -120,7 +128,7 @@ const Contact = () => {
                     Message
                   </label>
                   <textarea
-                    className="bg-gray-800 px-4 w-[390px] py-1 rounded-lg"
+                    className="md:contactinput contactResponsive"
                     name="message"
                     id="message"
                     autoComplete="off"
@@ -141,9 +149,8 @@ const Contact = () => {
                   </button>
                 </div>
               </form>
-            </section>
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
         {/* 
         <section className="mb-3 fixed bottom-0 m-auto w-full  ">
           <iframe
@@ -156,6 +163,7 @@ const Contact = () => {
           ></iframe>
         </section> */}
       </section>
+      </div>
     </>
   );
 };

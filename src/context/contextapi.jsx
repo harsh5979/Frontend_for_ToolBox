@@ -4,8 +4,11 @@ import { toast } from "react-toastify";
 export const Authcontext = createContext();
 
 export const MycontextProvider = ({ children }) => {
+  const url = "http://localhost:3000";
   const [token, settoken] = useState(localStorage.getItem("token"));
   const [user, setuser] = useState("");
+  const [fetchUser, setfetchUser] = useState([""]);
+  const [fetchContact, setfetchContact] = useState([""]);
 
   const storeToken = (servertoken) => {
     settoken(servertoken);
@@ -21,7 +24,7 @@ export const MycontextProvider = ({ children }) => {
   };
 
   const userdata = async () => {
-    const response = await fetch("http://localhost:3000/auth/api/getuser", {
+    const response = await fetch(`${url}/auth/api/getuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,33 +50,58 @@ export const MycontextProvider = ({ children }) => {
   // add notes
   const addnotes = async (data) => {
     // console.log(`add notes is`,data)
-      const response = await fetch("http://localhost:3000/user/api/addnote", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": token,
-        },
-        body: JSON.stringify(data),
-      });
-    
+    const response = await fetch(`${url}/user/api/addnote`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify(data),
+    });
+
     const res = await response.json();
     toast(res.message);
-    fetchnote()
+    fetchnote();
     if (res.ok) {
     } else {
       toast(res.error ? res.error : res);
     }
     toast(res);
   };
-  
+
   // fetch all notes..............
   const [notesdata, setnotesdata] = useState([""]);
 
   const fetchnote = async () => {
-
     if (islogin) {
-      
-    const r = await fetch("http://localhost:3000/user/api/fetchnote", {
+      const r = await fetch(`${url}/user/api/fetchnote`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+      const re = await r.json();
+      // console.log(re);
+      setnotesdata(re);
+
+      // console.log(notesdata);
+      if (r.ok) {
+        toast(r.message);
+      } else {
+        toast(r.message);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchnote();
+  }, [islogin]);
+
+  //edit Notes........................
+  const editNotes = () => {};
+  // UserAdminPanel
+  const userAdminpanel = async () => {
+    const r = await fetch(`${url}/adminpanel/api/userpanel/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -81,27 +109,31 @@ export const MycontextProvider = ({ children }) => {
       },
     });
     const re = await r.json();
-    // console.log(re);
-    setnotesdata(re);
-
-    // console.log(notesdata);
     if (r.ok) {
-      toast(r.message);
+      // console.log(re);
+      setfetchUser(re);
     } else {
       toast(r.message);
     }
-  }
-     
   };
-  useEffect(() => {
-    fetchnote();
-  }, [islogin]);
-
-//edit Notes........................
-  const editNotes =()=>{
-
-
-  }
+  // ContactAdminPanel
+  const contscAdminpanel = async () => {
+    const r = await fetch(`${url}/adminpanel/api/contactpanel/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    });
+    const re = await r.json();
+    if (r.ok) {
+      // console.log(re);
+      setfetchContact(re);
+    } else {
+      toast(r.message);
+    }
+  };
+  
 
   return (
     <Authcontext.Provider
@@ -114,7 +146,11 @@ export const MycontextProvider = ({ children }) => {
         fetchnote,
         notesdata,
         addnotes,
-        editNotes
+        editNotes,
+        userAdminpanel,
+        fetchUser,
+        contscAdminpanel,
+        fetchContact
       }}
     >
       {children}

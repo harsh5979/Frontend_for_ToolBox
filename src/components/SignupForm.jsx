@@ -38,7 +38,7 @@ const SignupForm = () => {
 
   return (
     <div>
-      <div className=" my-[40px]">
+      <div className=" my-[40px] ">
         <form
           id="paintingForm"
           className="text-black mt-[40px] mx-auto "

@@ -11,7 +11,7 @@ const Home = () => {
     <div className="snap-x snap-mandatory ">
       <main >
         <section className="bg-gray-900 text-white py-20 snap-center ">
-          <div className="container grid md:grid-cols-2    gap-8  m-auto my-1 justify-center content-center  ">
+          <div className="container grid md:grid-cols-2    gap-8  m-auto my-1 justify-center content-center ">
             <div className="flex flex-col justify-center mx-7 ">
               <p className="text-sm select-none">We are the World <span className="text-yellow-500">Best PassWord Manager</span> </p>
               <h1 className="md:text-4xl font-bold text-4xl">
@@ -66,7 +66,7 @@ const Home = () => {
             </div>
 
             {/* hero images  */}
-            <div className=" flex  justify-center    md:order-1     md:m-1  cursor-none ">
+            <div className=" flex  justify-center    md:order-1     md:m-1  cursor-none select-none ">
               <img
                 src="/img/home.png"
                 alt="coding together"

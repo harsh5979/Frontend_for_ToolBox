@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import "./App.css";
+import "./index"
 import Navbar from "./components/Navbar";
 import {Routes,Route,BrowserRouter} from 'react-router-dom';
 import Home from "./pages/Home";
@@ -14,6 +15,7 @@ import Note from "./pages/Note";
 import About from "./pages/About";
 import AdminPanel from "./pages/AdminPanel";
 import PasswordManager from "./pages/PasswordManager";
+import TodoList from "./pages/TodoList";
 
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
     <Route path="/project" element={<Project/>}/>
     <Route path="/logout" element={<Logout/>}/>
     <Route path="/note" element={<Note/>}/>
+    <Route path="/todolist" element={<TodoList/>}/>
     <Route path="/passwordapp" element={<PasswordManager/>}/>
 
    </Routes>
