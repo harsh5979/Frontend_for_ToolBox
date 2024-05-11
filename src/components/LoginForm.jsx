@@ -54,7 +54,7 @@ const LoginForm = () => {
             {...register("email", {
               required: { value: true, message: "Enter valid email!!" },
             })}
-            className="block w-full px-4 py-2 my-8  border-2 border-gray-300 rounded-b-lg focus:outline-none focus:border-blue-500"
+            className="placeholder:text-slate-800 bg-transparent block w-full px-4 py-2 my-8  border-4  rounded-b-lg focus:outline-none focus:border-gray-300 border-gray-600/40 "
           />
           {errors.email && (
             <div className="text-red-800 text-left text-xs flex py-1  ">
@@ -77,7 +77,7 @@ const LoginForm = () => {
                 message: "enter password at least 4 digit",
               },
             })}
-            className="block w-full px-4 py-2 my-7 border-2 border-gray-300 rounded-b-lg focus:outline-none focus:border-blue-500"
+            className="placeholder:text-slate-800 bg-transparent  block w-full px-4 py-2 my-7 border-4  rounded-b-lg focus:outline-none focus:border-gray-300 border-gray-600/40 "
           />
           {errors.password && (
             <div className="text-red-800 text-left text-xs flex py-1 ">
@@ -92,7 +92,7 @@ const LoginForm = () => {
               {" "}
               <NavLink
                 to="/forgotpassword"
-                className={"removeLinkHover text-blue-400 hover:text-blue-800 "}
+                className={"removeLinkHover text-blue-600 hover:text-blue-800 "}
               >
                 forgot password?
               </NavLink>
@@ -112,7 +112,7 @@ const LoginForm = () => {
         <h3 className="my-3 text-center">
           Don't have an account?{" "}
           <NavLink
-            className={"removeLinkHover text-blue-400 hover:text-blue-800 "}
+            className={"removeLinkHover text-blue-600 hover:text-blue-800 "}
             to="/signup"
             element={<Signup />}
           >

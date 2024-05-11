@@ -133,7 +133,96 @@ export const MycontextProvider = ({ children }) => {
       toast(r.message);
     }
   };
-  
+  // addpracticals................
+  const addPractical = async (data) => {
+    const r = await fetch(`${url}/adminpanel/api/addpractical/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify(data),
+    });
+    const re = await r.json();
+    // if (r.ok) {
+    //   // console.log(re);
+    // } else {
+    //   toast(r);
+    // }
+  };
+
+  // todos crud oprations......................
+
+  // fetch todos......
+  const [todosapi, settodosapi] = useState([" "]);
+
+  const fetchtodos = async () => {
+    const r = await fetch(`${url}/tmko/fetchtodo`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    });
+    const res = await r.json();
+    // console.log(res);
+    settodosapi(res);
+  };
+
+
+  // add  todos....
+  const addTodo = async (data) => {
+    const r = await fetch(`${url}/tmko/addtodo`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify(data),
+    });
+    const res = await r.json();
+    if (r.ok) {
+      toast("todo added successfully");
+     await fetchtodos();
+    } else {
+      toast(res.error || "Failed to add todo");
+    }
+  };
+
+  //delete todo....
+  const deleteTodo = async (id) => {
+    const r = await fetch(`${url}/tmko/deletetodo/${id}`, {
+      method: "Delete",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    });
+    const res = await r.json();
+    console.log(res);
+    if (r.ok) {
+      toast(res.message);
+      fetchtodos();
+    }
+  };
+    // updateTodo  todos....
+    const updateTodo = async (data,id) => {
+      const r = await fetch(`${url}/tmko/updatetodo/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+        body: JSON.stringify(data),
+      });
+      const res = await r.json();
+      if (r.ok) {
+        toast("todo edited successfully");
+       await fetchtodos();
+      } else {
+        toast(res.error || "Failed to edit todo");
+      }
+    };
 
   return (
     <Authcontext.Provider
@@ -150,7 +239,13 @@ export const MycontextProvider = ({ children }) => {
         userAdminpanel,
         fetchUser,
         contscAdminpanel,
-        fetchContact
+        fetchContact,
+        addTodo,
+        fetchtodos,
+        todosapi,
+        deleteTodo,
+        updateTodo,
+        addPractical,
       }}
     >
       {children}

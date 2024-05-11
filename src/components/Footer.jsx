@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="">
         <footer className="bg-gray-800 text-white py-4  w-full md:h-20 h-[110px]  relative bottom-0">
           <div className="md:flex justify-around ">
-            <h3 className="text-center my-1 ">
+            <h3 className="text-center my-1 select-none ">
               Designed and Developed by Harsh Prajapati.
             </h3>
             <div className=" flex justify-center mb-1">

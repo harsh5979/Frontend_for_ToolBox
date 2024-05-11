@@ -19,7 +19,7 @@ const Cards = ({ data }) => {
           </div>
         </div>
 
-        <div className="flex md:gap-8  m-auto  md:m-auto flex-col md:flex-row  items-center justify-center">
+        <div className="flex md:gap-8  m-auto  md:m-auto flex-col md:flex-row  items-center justify-center flex-wrap">
           {data.map((e) => {
             return (
               <div key={e.id}>
@@ -37,7 +37,7 @@ const Cards = ({ data }) => {
                     className="rounded-xl  h-[250px] my-5 mx-5 object-cover object-center"
                   />
                   <div className=" p-4">
-                    <h2 className="text-xl font-semibold mb-4 text-gray-500 ">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-800 ">
                       {e.title}
                     </h2>
                     <p className="text-gray-700 my-6 text-sm">{e.dsc}</p>

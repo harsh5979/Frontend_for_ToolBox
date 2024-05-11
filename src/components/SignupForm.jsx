@@ -50,7 +50,7 @@ const SignupForm = () => {
               <input
                 type="text"
                 placeholder="Enter Name*"
-                className="border-solid  focus:border-blue-500 focus:outline-none border-gray-300 border-2  rounded-b-lg"
+                className="placeholder:text-slate-800 bg-transparent border-solid focus:border-gray-300 focus:outline-none border-gray-600/40 border-4  rounded-b-lg"
                 {...register("name", {
                   required: { value: true, message: "Name is require!" },
                   minLength: {
@@ -73,7 +73,7 @@ const SignupForm = () => {
               <input
                 type="email"
                 placeholder=" Email*"
-                className="border-solid focus:border-blue-500 focus:outline-none border-gray-300 border-2 rounded-b-lg"
+                className="placeholder:text-slate-800 bg-transparent border-solid focus:border-gray-300 focus:outline-none border-gray-600/40 border-4 rounded-b-lg"
                 name="email"
                 {...register("email", {
                   required: { value: true, message: "email id is require!" },
@@ -93,7 +93,7 @@ const SignupForm = () => {
               <input
                 type="text"
                 placeholder=" Password*"
-                className="border-solid focus:outline-none focus:border-blue-500 border-gray-300 border-2  rounded-b-lg"
+                className="placeholder:text-slate-800  bg-transparent border-solid focus:outline-none focus:border-gray-300 border-gray-600/40 border-4  rounded-b-lg"
                 name="pincode"
                 {...register("password", {
                   required: { value: true, message: "Enter Password!" },

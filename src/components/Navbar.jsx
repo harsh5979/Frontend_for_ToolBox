@@ -7,16 +7,16 @@ const Navbar = () => {
   const { islogin } = useAuth();
 
   // login & signup active or not ......
-  const [loginActive, setloginActive] = useState(false);
-  const [signupActive, setsignupActive] = useState(false);
-  const handlelogin = () => {
-    setloginActive(true);
-    setsignupActive(false);
-  };
-  const handlesignup = () => {
-    setsignupActive(true);
-    setloginActive(false);
-  };
+  // const [loginActive, setloginActive] = useState(false);
+  // const [signupActive, setsignupActive] = useState(false);
+  // const handlelogin = () => {
+  //   setloginActive(true);
+  //   setsignupActive(false);
+  // };
+  // const handlesignup = () => {
+  //   setsignupActive(true);
+  //   setloginActive(false);
+  // };
 
   // issticky navbar styling.......
   const [isSticky, setisSticky] = useState(false);
@@ -215,10 +215,7 @@ const Navbar = () => {
                     // className={"removeLinkHover border-r border-white"}
                   >
                     <button
-                      onClick={handlelogin}
-                      className={`md:px-7 md:py-[5px] py-[9px] px-9   bg-[#29303d] hover:bg-slate-500 rounded ${
-                        loginActive ? "bg-slate-500 text-white" : ""
-                      }  `}
+                      className={`md:px-7 md:py-[5px] py-[9px] px-9   bg-[#29303d] hover:bg-slate-500 rounded   `}
                     >
                       Login
                     </button>
@@ -285,10 +282,8 @@ const Navbar = () => {
               // className={"removeLinkHover border-r border-white"}
             >
               <button
-                onClick={handlelogin}
-                className={`md:px-7 md:py-[5px] py-[9px] px-9 mx-7  bg-[#29303d] hover:bg-slate-500 rounded ${
-                  loginActive ? "bg-slate-500 text-white" : ""
-                }  `}
+              
+                className={`md:px-7 md:py-[5px] py-[9px] px-9 mx-7  bg-[#29303d] hover:bg-slate-500 rounded   `}
               >
                 Logout
               </button>
@@ -307,10 +302,8 @@ const Navbar = () => {
                 // className={"removeLinkHover border-r border-white"}
               >
                 <button
-                  onClick={handlelogin}
-                  className={`md:px-7 md:py-[5px] py-[9px] px-9   bg-[#29303d] hover:bg-slate-500 rounded ${
-                    loginActive ? "bg-slate-500 text-white" : ""
-                  }  `}
+             
+                  className={`md:px-7 md:py-[5px] py-[9px] px-9   bg-[#29303d] hover:bg-slate-500 rounded `}
                 >
                   Login
                 </button>
@@ -328,10 +321,8 @@ const Navbar = () => {
                 onClick={handletoggleclick}
               >
                 <button
-                  onClick={handlesignup}
-                  className={`md:px-7 md:py-[5px] py-[9px] px-9  hover:bg-slate-500 bg-[#29303d] rounded ${
-                    signupActive ? "bg-slate-500 text-white" : ""
-                  }  `}
+                 
+                  className={`md:px-7 md:py-[5px] py-[9px] px-9  hover:bg-slate-500 bg-[#29303d] rounded   `}
                 >
                   Sign up{" "}
                 </button>
