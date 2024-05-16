@@ -131,6 +131,19 @@ const Navbar = () => {
               Home
             </li>
           </NavLink>
+          <NavLink
+            onClick={handletoggleclick}
+            className={(e) => {
+              return e.isActive
+                ? "text-white after:w-[100%] after:bg-[#73a6e1] "
+                : "";
+            }}
+            to="/study"
+          >
+            <li className=" bd py-5 w-full  text-[17px] md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
+              study
+            </li>
+          </NavLink>
           {/* service ....................... */}
           <NavLink
             onClick={handleDropDown}

@@ -27,7 +27,7 @@ const card = [
     title: "Study Material ",
     dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
     image:"../img/study material.png",
-    url:"/project",
+    url:"/study",
   },
   { 
     id: 5,

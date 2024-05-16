@@ -64,9 +64,10 @@ const FetchNote = () => {
                       <BsThreeDotsVertical />
                     </button>
                   </div>
-                  <div className="relative bottom-[180px] left-[100px]  border  w-[150px] h-[120px] backdrop-blur-sm">
+                  {/* <div className="relative bottom-[180px] left-[100px]  border  w-[150px] h-[120px] backdrop-blur-sm">
                    
-                  </div>
+                   
+                  </div> */}
                 </div>
               </div>
             );

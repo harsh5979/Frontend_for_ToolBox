@@ -17,7 +17,8 @@ import AdminPanel from "./pages/AdminPanel";
 import PasswordManager from "./pages/PasswordManager";
 import TodoList from "./pages/TodoList";
 import AddPractical from "./pages/AddPractical";
-
+import Study from "./pages/Study";
+import AllPracticals from "./components/AllPracticals";
 function App() {
   return (
     <>
@@ -36,9 +37,9 @@ function App() {
           <Route path="/note" element={<Note />} />
           <Route path="/todolist" element={<TodoList />} />
           <Route path="/passwordapp" element={<PasswordManager />} />
-          {/* <Route path="/java/practical" element={<Practical />} />
-          <Route path="/" element={<Study/>} />
-          <Route path="/practical_1" element={<Practical />} /> */}
+          <Route path="/study" element={<Study/>} />
+          <Route path="/javaPracticals" element={<AllPracticals />} />
+          {/* <Route path="/practical_1" element={<Practical />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>

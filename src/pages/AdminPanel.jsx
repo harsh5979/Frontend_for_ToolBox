@@ -6,7 +6,7 @@ const AdminPanel = () => {
   const [option, setoption] = useState();
 
   return (
-    <div className="h-[100vh]">
+    <div className="h-fit">
       <h1 className="text-5xl text-center my-5 font-mono text-gray-200">
         Admin Panel{" "}
       </h1>
