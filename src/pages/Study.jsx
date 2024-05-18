@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import card from "../api/StudyCardsApi";
-import StudyCard from "../components/StudyCard";
+const StudyCard = React.lazy(() => import("../components/StudyCard"));
 
 const Study = () => {
   const [data, setdata] = useState(card);
@@ -8,7 +8,9 @@ const Study = () => {
   return (
     <div className="h-fit  justify-center flex items-center">
       <div className=" my-8">
-        <StudyCard data={data} />
+        <Suspense fallback={<p>loading....</p>}>
+          <StudyCard data={data} />
+        </Suspense>
       </div>
     </div>
   );

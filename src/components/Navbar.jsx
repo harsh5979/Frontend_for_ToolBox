@@ -86,7 +86,6 @@ const Navbar = () => {
   const hdp = () => {
     var d = document.getElementById("menu-drop-down");
     d.classList.add("hidden");
- 
   };
 
   return (
@@ -147,14 +146,16 @@ const Navbar = () => {
           {/* service ....................... */}
           <NavLink
             onClick={handleDropDown}
-            onMouseEnter={()=>{handleDropDown()}}
+            onMouseEnter={() => {
+              handleDropDown();
+            }}
             onMouseLeave={hdp}
             value="service"
             className={"removeLinkHover relative  "}
             to="#"
           >
-            <li className="bd md:py-3 my-2 w-full  md:border-0    border relative  " >
-              <div className="flex items-center justify-center"  >
+            <li className="bd md:py-3 my-2 w-full  md:border-0    border relative  ">
+              <div className="flex items-center justify-center">
                 Services
                 <FaAngleDown />
               </div>
@@ -295,7 +296,6 @@ const Navbar = () => {
               // className={"removeLinkHover border-r border-white"}
             >
               <button
-              
                 className={`md:px-7 md:py-[5px] py-[9px] px-9 mx-7  bg-[#29303d] hover:bg-slate-500 rounded   `}
               >
                 Logout
@@ -315,7 +315,6 @@ const Navbar = () => {
                 // className={"removeLinkHover border-r border-white"}
               >
                 <button
-             
                   className={`md:px-7 md:py-[5px] py-[9px] px-9   bg-[#29303d] hover:bg-slate-500 rounded `}
                 >
                   Login
@@ -334,7 +333,6 @@ const Navbar = () => {
                 onClick={handletoggleclick}
               >
                 <button
-                 
                   className={`md:px-7 md:py-[5px] py-[9px] px-9  hover:bg-slate-500 bg-[#29303d] rounded   `}
                 >
                   Sign up{" "}

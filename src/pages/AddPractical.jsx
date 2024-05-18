@@ -53,7 +53,7 @@ const AddPractical = () => {
           <input
             type="text"
             name="que"
-            className="outlineinput h-[37px]   "
+            className="outlineinput h-[46px]   "
             {...register("que")}
           />
         </div>
@@ -62,10 +62,10 @@ const AddPractical = () => {
           <label htmlFor="ans" className="text-left mb-2 ">
             ans :
           </label>
-          <input
+          <textarea
             type="text"
             name="ans"
-            className="outlineinput h-[37px]   "
+            className="outlineinput h-[46px]  w-[250px]  "
             {...register("ans")}
           />
         </div>

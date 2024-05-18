@@ -1,51 +1,27 @@
 import React, { useState, useEffect } from "react";
 import PCards from "../components/javaPracticalCard";
-import p_1 from "../api/java_practical/p-1";
-import p_2 from "../api/java_practical/p-2";
-import p_3 from "../api/java_practical/p-3";
-import p_4 from "../api/java_practical/p-4";
-import p_5 from "../api/java_practical/p-5";
-import p_6 from "../api/java_practical/p-6";
-import p_7 from "../api/java_practical/p-7";
-import p_8 from "../api/java_practical/p-8";
-import p_10 from "../api/java_practical/p-10";
-import p_11 from "../api/java_practical/p-11";
-import p_12 from "../api/java_practical/p-12";
-
+import { useAuth } from "../context/contextapi";
 import { NavLink } from "react-router-dom";
 
 const AllPracticals = () => {
+  const { d, pdata } = useAuth();
+  useEffect(() => {
+    let n = 1;
+    d(n);
+  }, []);
+
   const [selectedPractical, setselectedPractical] = useState(1);
   const handlePracticals = (n) => {
     setselectedPractical(n);
+
+    d(n);
+
+    // console.log(n)
   };
 
   const renderPractical = () => {
-    switch (selectedPractical) {
-      case 1:
-        return <PCards pdata={p_1} />;
-      case 2:
-        return <PCards pdata={p_2} />;
-      case 3:
-        return <PCards pdata={p_3} />;
-      case 4:
-        return <PCards pdata={p_4} />;
-      case 5:
-        return <PCards pdata={p_5} />;
-      case 6:
-        return <PCards pdata={p_6} />;
-      case 7:
-        return <PCards pdata={p_7} />;
-      case 8:
-        return <PCards pdata={p_8} />;
-      case 10:
-        return <PCards pdata={p_10} />;
-      case 11:
-        return <PCards pdata={p_11} />;
-      case 12:
-        return <PCards pdata={p_12} />;
-      default:
-        return null;
+    if (pdata !== null) {
+      return <PCards pdata={pdata} />;
     }
   };
 
@@ -74,7 +50,7 @@ const AllPracticals = () => {
     <div className="mt-1 justify-center content-center sticky ">
       <div className="text-center ">
         <div className="  ">
-          <ul className="  md:h-fit h-[60px]   w-[100vw]  flex flex-wrap  bg-gray-900  rounded-md    ">
+          <ul className="  md:h-fit h-[75px] overflow-y-auto  text-[13px] md:text-[16px] w-[100vw]  flex   bg-gray-900  rounded-md    ">
             {practical_number.map((num) => {
               return (
                 <li key={num} className="  md:mx-6 mx-2  ">

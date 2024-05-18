@@ -223,6 +223,24 @@ export const MycontextProvider = ({ children }) => {
         toast(res.error || "Failed to edit todo");
       }
     };
+    const [pdata, setpdata] = useState([""]);
+    
+    const d = async (n) => {
+      const r = await fetch(`${url}/adminpanel/api/fetchPracticals/${n}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": token,
+        },
+      });
+      const re = await r.json();
+      if (r.ok) {
+        // console.log(re);
+        setpdata(re);
+      } else {
+        toast(r.message);
+      }
+    };
 
   return (
     <Authcontext.Provider
@@ -246,6 +264,8 @@ export const MycontextProvider = ({ children }) => {
         deleteTodo,
         updateTodo,
         addPractical,
+        d,
+        pdata
       }}
     >
       {children}

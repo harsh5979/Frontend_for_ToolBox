@@ -5,7 +5,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { MdOutlineContentCopy } from "react-icons/md";
 
 const javaPracticalCard = ({ pdata, data }) => {
-  // const codeString = "";
   const [iscopy, setiscopy] = useState(null);
 
   const handlecopy = (id) => {
@@ -26,36 +25,39 @@ const javaPracticalCard = ({ pdata, data }) => {
               </h2>
             </div>
 
-            {e.ans && (
+            {e.ans && e.ans!=="" && (
               <div className="h-[390px]  md:w-[75%] w-[85vw]  justify-center items-center content-center  rounded-b-lg    border md:rounded-xl text-white bg-slate-700 overflow-auto md:mx-2 my-3 ">
                 <div className="bg-black p-3 sticky top-0 flex justify-between">
                   <h2 className="text-left  mx-7 ">Example code</h2>
                   <div className="mx-9  ">
-                    <CopyToClipboard text={e.ans} onCopy={()=>handlecopy(i)}>
-
-                    <button
-                      type="button"
-                      // onClick={() => {
-                      //   handlecopy();
-                      // }}
+                    <CopyToClipboard text={e.ans} onCopy={() => handlecopy(i)}>
+                      <button
+                        type="button"
+                        // onClick={() => {
+                        //   handlecopy();
+                        // }}
                       >
-                      <div className="flex justify-center  ">
-                        <div className="mx-2">
-                          
-                          <MdOutlineContentCopy />
+                        <div className="flex justify-center  ">
+                          <div className="mx-2">
+                            <MdOutlineContentCopy />
                           </div>
 
-                        <h2 className="w-8">{iscopy===i ? "Copied!!":"Copy" }</h2>
-                      </div>
-                    </button>
-                      </CopyToClipboard>
+                          <h2 className="w-8">
+                            {iscopy === i ? "Copied!!" : "Copy"}
+                          </h2>
+                        </div>
+                      </button>
+                    </CopyToClipboard>
                   </div>
                 </div>
 
-                <div className="text-left  ">
-                  <SyntaxHighlighter language="java" style={docco}>
-                    {/* {codeString} */}
-                    {`${e.ans}`}
+                <div className="text-left h-full ">
+                  <SyntaxHighlighter
+                    language="java"
+                    style={dark}
+                    
+                  >
+                    {`${e.ans} `}
                   </SyntaxHighlighter>
                 </div>
               </div>
@@ -63,20 +65,18 @@ const javaPracticalCard = ({ pdata, data }) => {
 
             {e.dse && (
               <div className="top-0  bg-black sticky rounded-md w-[900px] my-4 mx-3 ">
-               <div className="flex">
-
-               <h1 className="">des:</h1>{e.dse}</div>
-               </div>
-             
+                <div className="flex">
+                  <h1 className="">des:</h1>
+                  {e.dse}
+                </div>
+              </div>
             )}
 
             {e.note && (
               <div className="top-0  bg-black sticky rounded-md border my-4 mx-3 md:w-[600px]">
-                <h2 className="text-left mx-6 p-2">Note : {e.note_p}   </h2> 
-                <div className="bg-white text-black">
-                  {e.note}
-                  </div></div>
-             
+                <h2 className="text-left mx-6 p-2">Note : {e.note_p} </h2>
+                <div className="bg-white text-black">{e.note}</div>
+              </div>
             )}
           </div>
         );
