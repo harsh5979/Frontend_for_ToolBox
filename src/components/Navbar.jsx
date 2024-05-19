@@ -140,9 +140,11 @@ const Navbar = () => {
             to="/study"
           >
             <li className=" bd py-5 w-full  text-[17px] md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
-              study
+            Study_X
             </li>
           </NavLink>
+          
+
           {/* service ....................... */}
           <NavLink
             onClick={handleDropDown}
@@ -165,6 +167,21 @@ const Navbar = () => {
                   className="md:bg-slate-800 md:absolute top-[9vh] md:w-[10rem] md:translate-x-[-30%] hidden opacity-1  rounded-xl z-10 "
                   id="menu-drop-down"
                 >
+                  {/*StudyX...........................*/}
+                  <NavLink
+                    onClick={handletoggleclick}
+                    className={(e) => {
+                      return e.isActive
+                        ? "text-white  after:w-[100%] after:bg-[#73a6e1]"
+                        : "";
+                    }}
+                    to="/study"
+                  >
+                    <li className=" py-3 px-8  md:border-0  hover:bg-[#3f5e8199] border">
+                      Study_X
+                    </li>
+                  </NavLink>
+
                   {/* passXmanager........................... */}
                   <NavLink
                     onClick={handletoggleclick}
