@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,Suspense} from "react";
 import PCards from "../components/javaPracticalCard";
 import { useAuth } from "../context/contextapi";
 import { NavLink } from "react-router-dom";
@@ -15,12 +15,11 @@ const AllPracticals = () => {
     setselectedPractical(n);
 
     d(n);
-
-    // console.log(n)
   };
 
   const renderPractical = () => {
     if (pdata !== null) {
+      
       return <PCards pdata={pdata} />;
     }
   };
@@ -118,7 +117,12 @@ const AllPracticals = () => {
               <h1 className="my-5 text-4xl">Practical-{selectedPractical}</h1>
               <div className="justify-center   ">
                 {/* <PCards pdata={pdata} /> */}
+                <Suspense fallback={
+                  <div>loading....</div>
+                }> 
+
                 {renderPractical()}
+                </Suspense>
               </div>
             </div>
           </div>

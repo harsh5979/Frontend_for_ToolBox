@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Cards = ({ data }) => {
   return (
-    <div>
+    <div className="h-screen m-auto">
       <div className=" flex justify-center content-center gap-5 mx-10 flex-wrap">
         {data.map((e) => {
           return (

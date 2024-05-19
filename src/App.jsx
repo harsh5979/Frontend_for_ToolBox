@@ -1,29 +1,35 @@
-import { useState } from "react";
-
+import React, { Suspense, lazy } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./App.css";
 import "./index";
 import Navbar from "./components/Navbar";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader"
+
+// Lazy load components
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Logout from "./pages/Logout";
 import Contact from "./pages/Contact";
-import Footer from "./components/Footer";
 import Project from "./pages/Project";
-import Note from "./pages/Note";
-import About from "./pages/About";
-import AdminPanel from "./pages/AdminPanel";
-import PasswordManager from "./pages/PasswordManager";
-import TodoList from "./pages/TodoList";
-import AddPractical from "./pages/AddPractical";
-import Study from "./pages/Study";
-import AllPracticals from "./components/AllPracticals";
+const Note = lazy(() => import("./pages/Note"));
+const About = lazy(() => import("./pages/About"));
+const AdminPanel = lazy(() => import("./pages/AdminPanel"));
+const PasswordManager = lazy(() => import("./pages/PasswordManager"));
+const TodoList = lazy(() => import("./pages/TodoList"));
+const AddPractical = lazy(() => import("./pages/AddPractical"));
+const Study = lazy(() => import("./pages/Study"));
+const AllPracticals = lazy(() => import("./components/AllPracticals"));
+
 function App() {
+  
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
+    <BrowserRouter>
+      <Navbar />
+      <Suspense
+        fallback={<Loader/>}
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/adminpanel" element={<AdminPanel />} />
@@ -37,13 +43,13 @@ function App() {
           <Route path="/note" element={<Note />} />
           <Route path="/todolist" element={<TodoList />} />
           <Route path="/passwordapp" element={<PasswordManager />} />
-          <Route path="/study" element={<Study/>} />
+          <Route path="/study" element={<Study />} />
           <Route path="/javaPracticals" element={<AllPracticals />} />
           {/* <Route path="/practical_1" element={<Practical />} /> */}
         </Routes>
-        <Footer />
-      </BrowserRouter>
-    </>
+      </Suspense>
+      <Footer />
+    </BrowserRouter>
   );
 }
 

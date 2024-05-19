@@ -20,7 +20,7 @@ const javaPracticalCard = ({ pdata, data }) => {
             className="overflow-auto my-8 m-auto justify-center  "
           >
             <div>
-              <h2 className="text-left w-[800px]   md:my-2 md:mb-8 md:mx-2">
+              <h2 className="text-left md:w-[800px] flex-wrap   md:my-2 md:mb-8 md:mx-2">
                 {e.que}
               </h2>
             </div>
@@ -51,7 +51,7 @@ const javaPracticalCard = ({ pdata, data }) => {
                   </div>
                 </div>
 
-                <div className="text-left h-full ">
+                <div className="text-left  ">
                   <SyntaxHighlighter
                     language="java"
                     style={dark}

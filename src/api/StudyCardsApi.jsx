@@ -7,34 +7,24 @@ const StudyCard = [
     },
     {
       id: 2,
-      title: "Todo-List ",
-      dsc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      url:"/todolist",
+      title: "C language Practicals sem-2✨",
+      dsc: "  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      url:"#",
     },
     {
       id: 3,
-      title: "Todo-List ",
+      title: "GTU  Paper  ",
       dsc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      url:"/todolist",
+      url:"#",
     },
     {
       id: 4,
-      title: "Todo-List ",
+      title: "PPS Sem-2 ",
       dsc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      url:"/todolist",
+      url:"#",
     },
-    {
-      id: 5,
-      title: "PasswordX Manager ",
-      dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      url:"/passwordapp",
-    },
-    { 
-      id: 6,
-      title: "four box ",
-      dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-      url:"/project",
-    },
+
+   
   ];
   
   export default StudyCard;

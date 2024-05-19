@@ -162,7 +162,7 @@ const Navbar = () => {
 
               {islogin && (
                 <ul
-                  className="md:bg-slate-800 md:absolute top-[9vh] md:w-[10rem] md:translate-x-[-30%] hidden opacity-1  rounded-xl z-10"
+                  className="md:bg-slate-800 md:absolute top-[9vh] md:w-[10rem] md:translate-x-[-30%] hidden opacity-1  rounded-xl z-10 "
                   id="menu-drop-down"
                 >
                   {/* passXmanager........................... */}
