@@ -5,9 +5,8 @@ import { useAuth } from "../context/contextapi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 const FetchNote = () => {
-  const { notesdata } = useAuth();
+  const { reversedData } = useAuth();
   const [crud, setcrud] = useState(false);
-  
 
   return (
     <div>
@@ -15,11 +14,11 @@ const FetchNote = () => {
         <h1 className="text-2xl mb-6"> Fetch All Notes</h1>
       </div>
       <div className="border border-t-2 border-r-0 border-l-0  pt-5 px-5 flex flex-wrap gap-4 h-[75vh] mx-6 mb-4 overflow-y-scroll  snap-center ">
-        {notesdata.length === 0 && (
+        {reversedData.length === 0 && (
           <div className="mx-8 my-4 p-3 text-2xl">No Notes to hare...</div>
         )}
 
-        {notesdata.map((e) => {
+        {reversedData.map((e) => {
           if (
             e.title !== null &&
             e.description !== undefined &&
@@ -60,14 +59,13 @@ const FetchNote = () => {
                     {e.date}
                   </h4>
                   <div className="rounded-full w-6 h-5 relative left-[250px] bottom-7 content-center flex justify-center cursor-pointer  border-black ">
-                    <button onClick={()=>setcrud((pre)=>!pre)}>
+                    <button onClick={(e) => setcrud(true)}>
                       <BsThreeDotsVertical />
                     </button>
                   </div>
-                  {/* <div className="relative bottom-[180px] left-[100px]  border  w-[150px] h-[120px] backdrop-blur-sm">
-                   
-                   
-                  </div> */}
+                  {crud && (
+                    <div className="relative bottom-[180px] left-[100px]  border  w-[150px] h-[120px] backdrop-blur-sm"></div>
+                  )}
                 </div>
               </div>
             );

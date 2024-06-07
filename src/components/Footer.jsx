@@ -18,7 +18,7 @@ const Footer = () => {
               Designed and Developed by Harsh Prajapati.
             </h3>
             <div className=" flex justify-center mb-1">
-              &copy; 2024 HP✨. All Rights Reserved.
+              &copy; 2024 GECM✨.  All Rights Reserved.
             </div>
             <ul className="flex gap-4 justify-center content-center my-2 ">
               <li className="flex  ">

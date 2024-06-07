@@ -29,13 +29,13 @@ const card = [
     image:"../img/study material.jpg",
     url:"/study",
   },
-  { 
-    id: 5,
-    title: "four box ",
-    dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-    image:"../img/password manager 2.jpg",
-    url:"/project",
-  },
+  // { 
+  //   id: 5,
+  //   title: "four box ",
+  //   dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  //   image:"../img/password manager 2.jpg",
+  //   url:"/project",
+  // },
 ];
 
 export default card;

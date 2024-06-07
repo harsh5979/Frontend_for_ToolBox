@@ -5,10 +5,16 @@ import { MdDelete } from "react-icons/md";
 
 const ContactsAdminapi = () => {
   const { contscAdminpanel } = useAuth();
-  const { fetchContact } = useAuth();
+  const { fetchContact ,deleteContact} = useAuth();
   useEffect(() => {
     contscAdminpanel();
   }, []);
+
+  const handaleDelete = (id)=>{
+    deleteContact(id)
+    contscAdminpanel()
+   
+  }
 
   return (
     <>
@@ -25,7 +31,7 @@ const ContactsAdminapi = () => {
                 <button className="px-2">
                   <FaEdit />
                 </button>
-                <button className="px-2">
+                <button className="px-2" onClick={()=>handaleDelete(e._id)}>
                   <MdDelete />
                 </button>
               </div>

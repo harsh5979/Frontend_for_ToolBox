@@ -1,10 +1,12 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { disableReactDevTools } from "@fvilers/disable-react-devtools";
+
 import "./App.css";
 import "./index";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Loader from "./components/Loader"
+import Loader from "./components/Loader";
 
 // Lazy load components
 import Home from "./pages/Home";
@@ -13,6 +15,7 @@ import Signup from "./pages/Signup";
 import Logout from "./pages/Logout";
 import Contact from "./pages/Contact";
 import Project from "./pages/Project";
+// import Documentry from "./pages/Documentry";
 const Note = lazy(() => import("./pages/Note"));
 const About = lazy(() => import("./pages/About"));
 const AdminPanel = lazy(() => import("./pages/AdminPanel"));
@@ -21,17 +24,22 @@ const TodoList = lazy(() => import("./pages/TodoList"));
 const AddPractical = lazy(() => import("./pages/AddPractical"));
 const Study = lazy(() => import("./pages/Study"));
 const AllPracticals = lazy(() => import("./components/AllPracticals"));
+const Documentry = lazy(() => import("./pages/Documentry"));
+// import AllPracticals from "./components/AllPracticals";
 
 function App() {
-  
+  // if (process.env.NODE_ENV === "production") {
+    disableReactDevTools();
+  // }
+
   return (
     <BrowserRouter>
       <Navbar />
-      <Suspense
-        fallback={<Loader/>}
-      >
+      <Suspense fallback={<Loader />}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Study />} />
+
           <Route path="/adminpanel" element={<AdminPanel />} />
           <Route path="/addpractical" element={<AddPractical />} />
           <Route path="/contact" element={<Contact />} />
@@ -45,6 +53,7 @@ function App() {
           <Route path="/passwordapp" element={<PasswordManager />} />
           <Route path="/study" element={<Study />} />
           <Route path="/javaPracticals" element={<AllPracticals />} />
+          <Route path="/documentry" element={<Documentry />} />
           {/* <Route path="/practical_1" element={<Practical />} /> */}
         </Routes>
       </Suspense>

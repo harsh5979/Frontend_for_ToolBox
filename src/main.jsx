@@ -7,9 +7,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { MycontextProvider } from './context/contextapi.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
     <MycontextProvider>
-  <React.StrictMode>
+  {/* <React.StrictMode> */}
     <App />
     <ToastContainer />
-  </React.StrictMode>
+  {/* </React.StrictMode> */}
   </MycontextProvider>
 )

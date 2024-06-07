@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../context/contextapi";
 
 const SignupForm = () => {
-  const {storeToken} = useAuth();
+  const { storeToken, url } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -17,7 +17,7 @@ const SignupForm = () => {
   } = useForm();
 
   const onsubmit = async (data) => {
-    const r = await fetch("http://localhost:3000/auth/api/", {
+    const r = await fetch(`${url}/auth/api/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -77,6 +77,10 @@ const SignupForm = () => {
                 name="email"
                 {...register("email", {
                   required: { value: true, message: "email id is require!" },
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: "Enter a valid email address.",
+                  },
                 })}
               />
               {errors.email && (

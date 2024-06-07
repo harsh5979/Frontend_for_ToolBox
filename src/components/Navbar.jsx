@@ -43,7 +43,7 @@ const Navbar = () => {
       menu.src = "/img/close.svg";
       sethamb(true);
       document.querySelectorAll(".humbar").forEach((e) => {
-        e.classList.toggle("-left-full");
+        e.classList.toggle("-left-[120%]");
         e.style.zIndex = "1";
       });
     } else if (hamb) {
@@ -51,7 +51,7 @@ const Navbar = () => {
       sethamb(false);
       // document.querySelectorAll(".humbar").classListAll.add("-left-full");
       document.querySelectorAll(".humbar").forEach((e) => {
-        e.classList.toggle("-left-full");
+        e.classList.toggle("-left-[120%]");
       });
     }
   };
@@ -60,7 +60,7 @@ const Navbar = () => {
   };
   const handletoggleclick = () => {
     document.querySelectorAll(".humbar").forEach((e) => {
-      e.classList.toggle("-left-full");
+      e.classList.toggle("-left-[120%]");
 
       handlemenubar();
     });
@@ -98,7 +98,7 @@ const Navbar = () => {
         <div className="logo text-center mx-2 ">
           <NavLink className="removeLinkHover " to="/">
             <h2 className="md:text-xl cursor-pointer text-[#9c6a34] hover:text-[#975d20] md:mx-7 mx-5 text-2xl ">
-              HP ✨
+              GECM ✨
             </h2>
           </NavLink>
         </div>
@@ -115,7 +115,7 @@ const Navbar = () => {
         {/* nav element */}
         <div
           id="navElement"
-          className="humbar -left-full md:left-0  gap-16 list-none  md:mx-6 text-[#808080 ] md:bg-transparent md:w-fit  md:relative md:top-0 md:bg-none md:p-0   md:flex md:h-full absolute right-0 top-[75px]  bg-[#0a131d]  p-8  rounded w-[398px] text-center h-[750px] "
+          className="humbar -left-[120%] md:left-0  gap-16 list-none  md:mx-6 text-[#808080 ] md:bg-transparent md:w-fit  md:relative md:top-0 md:bg-none md:p-0   md:flex md:h-full absolute right-0 top-[75px]  bg-[#0a131d]  p-8  rounded w-[398px] text-center h-[750px] "
         >
           <NavLink
             onClick={handletoggleclick}
@@ -126,11 +126,11 @@ const Navbar = () => {
             }}
             to="/"
           >
-            <li className=" bd py-5 w-full  text-[17px] md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
+            <li className=" bd py-5 md:w-full  text-[17px] md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
               Home
             </li>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             onClick={handletoggleclick}
             className={(e) => {
               return e.isActive
@@ -142,7 +142,7 @@ const Navbar = () => {
             <li className=" bd py-5 w-full  text-[17px] md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
             Study_X
             </li>
-          </NavLink>
+          </NavLink> */}
           
 
           {/* service ....................... */}
@@ -156,7 +156,7 @@ const Navbar = () => {
             className={"removeLinkHover relative  "}
             to="#"
           >
-            <li className="bd md:py-3 my-2 w-full  md:border-0    border relative  ">
+            <li className="bd md:py-3 my-2 md:w-full  md:border-0    border relative  ">
               <div className="flex items-center justify-center">
                 Services
                 <FaAngleDown />
@@ -265,7 +265,7 @@ const Navbar = () => {
             }}
             to="/Project"
           >
-            <li className="bd py-5 w-full  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
+            <li className="bd py-5 md:w-full  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
               Projects
             </li>
           </NavLink>
@@ -293,13 +293,13 @@ const Navbar = () => {
             }}
             to="/contact"
           >
-            <li className="bd  py-5 w-full text-[17px]  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
+            <li className="bd  py-5 md:w-full  text-[17px]  md:border-0 md:hover:bg-transparent hover:bg-[#3f5e8199] border">
               Contact us
             </li>
           </NavLink>
         </div>
         {/* login , sign up  and logout buttons......................*/}
-        <div className=" btn mx-[65px] humbar -left-full md:left-0 gap-2 md:mx-5 md:block md:relative md:top-0 absolute top-[680px]     ">
+        <div className=" btn mx-[65px] humbar -left-[120%] md:left-0 gap-2 md:mx-5 md:block md:relative md:top-0 absolute top-[690px]      ">
           {islogin ? (
             // logout button............
             <NavLink

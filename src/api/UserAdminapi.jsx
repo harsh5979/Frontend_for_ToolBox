@@ -8,7 +8,12 @@ const UserAdminapi = () => {
   useEffect(() => {
     userAdminpanel();
   }, []);
-  const { fetchUser } = useAuth();
+  const { fetchUser, deleteUser } = useAuth();
+
+  const handaleDelete = (id) => {
+    deleteUser(id);
+  
+  };
 
   return (
     <>
@@ -23,7 +28,7 @@ const UserAdminapi = () => {
                 <button className="px-2">
                   <FaEdit />
                 </button>
-                <button className="px-2">
+                <button className="px-2" onClick={() => handaleDelete(e._id)}>
                   <MdDelete />
                 </button>
               </div>

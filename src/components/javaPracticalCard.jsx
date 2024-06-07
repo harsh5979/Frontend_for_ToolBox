@@ -26,7 +26,7 @@ const javaPracticalCard = ({ pdata, data }) => {
             </div>
 
             {e.ans && e.ans!=="" && (
-              <div className="h-[390px]  md:w-[75%] w-[85vw]  justify-center items-center content-center  rounded-b-lg    border md:rounded-xl text-white bg-slate-700 overflow-auto md:mx-2 my-3 ">
+              <div className="h-[390px]  md:w-[75%] w-[82vw]  justify-center items-center content-center  rounded-b-lg    border md:rounded-xl text-white bg-slate-700 overflow-auto md:mx-2 my-3 ">
                 <div className="bg-black p-3 sticky top-0 flex justify-between">
                   <h2 className="text-left  mx-7 ">Example code</h2>
                   <div className="mx-9  ">
