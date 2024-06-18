@@ -33,23 +33,24 @@ const EditTodo = ({ onclose, id,defaultTitle  }) => {
     <div
       ref={modalref}
       onClick={closeModel}
-      className="fixed backdrop-blur-sm mt-12 bg-black bg-opacity-25 inset-0  items-center   justify-center flex "
+      className="fixed backdrop-blur-sm mt-12 bg-black bg-opacity-25 inset-0  items-center   justify-center flex  "
     >
-      <div className=" flex flex-col text-white border  p-2">
+      <div className=" flex flex-col text-black border rounded-lg  p-2 bg-slate-50">
         <button className="place-self-end mx-3 " onClick={onclose}>
-          <IoMdClose size={30} />
+          <IoMdClose size={35} color="red"/>
         </button>
         <div className="">
-          <h1 className="text-2xl mt-6 font-semibold  text-center mb-2 mx-3 select-none">
+          <h1 className="text-3xl  font-mono  text-center mb-2 mx-3 select-none">
             Edit Todos
           </h1>
 
           <form action="" method="POST" onSubmit={handleSubmit(onsubmit)}>
             <input
               type="text"
+              autoFocus
               {...register("title")}
               defaultValue={defaultTitle}
-              className="md:w-[590px] w-[90vw] px-4 py-1 mx-4 my-3 rounded  h-[5vh] text-black"
+              className="md:w-[400px] w-[90vw] px-4 py-1 mx-4 my-3 rounded  h-[5vh] text-black"
             />
 
             <button

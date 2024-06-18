@@ -5,7 +5,7 @@ import FetchNote from '../components/FetchNote'
 const Note = () => {
   
   return (
-    <div className='h-fit flex justify-center flex-col md:flex-row  '>
+    <div className='h-screen flex justify-center flex-col md:flex-row  '>
       {/* <div className="absolute top-[350px] font-mono text-2xl ">UNDER CONSTRUCTION...
       </div> */}
 

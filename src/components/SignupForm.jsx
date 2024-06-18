@@ -30,9 +30,9 @@ const SignupForm = () => {
       storeToken(res.authtoken);
 
       navigate("/login");
-      toast(res.message);
+      toast.success(res.message);
     } else {
-      toast(res.message);
+      toast.error(res.message);
     }
   };
 
@@ -48,6 +48,7 @@ const SignupForm = () => {
           <div className="flex  flex-col gap-3 mt-5 items-center justify-center ">
             <div className="h-[60px] ">
               <input
+                autoFocus
                 type="text"
                 placeholder="Enter Name*"
                 className="placeholder:text-slate-800 bg-transparent border-solid focus:border-gray-300 focus:outline-none border-gray-600/40 border-4  rounded-b-lg"
@@ -71,6 +72,7 @@ const SignupForm = () => {
 
             <div className="h-[60px]">
               <input
+                
                 type="email"
                 placeholder=" Email*"
                 className="placeholder:text-slate-800 bg-transparent border-solid focus:border-gray-300 focus:outline-none border-gray-600/40 border-4 rounded-b-lg"
@@ -95,6 +97,7 @@ const SignupForm = () => {
 
             <div className="h-[60px]">
               <input
+               
                 type="text"
                 placeholder=" Password*"
                 className="placeholder:text-slate-800  bg-transparent border-solid focus:outline-none focus:border-gray-300 border-gray-600/40 border-4  rounded-b-lg"

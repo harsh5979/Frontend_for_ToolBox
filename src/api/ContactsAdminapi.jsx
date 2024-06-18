@@ -21,18 +21,18 @@ const ContactsAdminapi = () => {
       {fetchContact.map((e, i) => {
         return (
           <tr className="border " key={i}>
-            <td className=" border text-center">{i + 1}</td>
-            <td className="border text-center">{e.username}</td>
-            <td className="border text-center text-wrap">{e.email}</td>
-            <td className="border text-center">{e.message}</td>
-            <td className="border text-center">
+            <td className=" tbd">{i + 1}</td>
+            <td className="tbd">{e.username}</td>
+            <td className="tbd ">{e.email}</td>
+            <td className="tbd">{e.message}</td>
+            <td className="tbd">
          
               <div className="flex mx-5 gap-5">
                 <button className="px-2">
-                  <FaEdit />
+                  <FaEdit size={25} />
                 </button>
                 <button className="px-2" onClick={()=>handaleDelete(e._id)}>
-                  <MdDelete />
+                  <MdDelete size={25}/>
                 </button>
               </div>
             </td>

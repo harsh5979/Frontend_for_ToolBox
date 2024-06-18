@@ -118,7 +118,7 @@ const Addnotes = () => {
                 className="bg-[#3f5e8199] w-[295px] py-2 px-6 rounded hover:bg-[#70a2da99] "
                 type="submit"
               >
-                Add note
+                Create Note
               </button>
             </div>
           </form>

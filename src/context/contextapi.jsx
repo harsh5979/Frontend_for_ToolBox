@@ -1,10 +1,16 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
+// import "../dotenv/config"
 
 export const Authcontext = createContext();
 
 export const MycontextProvider = ({ children }) => {
-  const url = "http://localhost:3000";
+  // const url = import.meta.env.REACT_API;
+  // const url = import.meta.env.VITE_REACT_API;
+  const url = import.meta.env.VITE_RENDER_API;
+
+  
+  // const url = "http://localhost:3000";
   // const url = "http://15.207.255.221:5001"
   // const url = "https://kb-kc44.onrender.com";
   const [token, settoken] = useState(localStorage.getItem("token"));
@@ -21,13 +27,14 @@ export const MycontextProvider = ({ children }) => {
   const Logout = () => {
     settoken("");
     setuser("");
+    toast.success("Logout....");
 
     return localStorage.removeItem("token");
   };
   const userAdmin = async () => {
     if (islogin) {
       const power = user.isadmin == true;
-      console.log(power);
+      // console.log(power);
     }
   };
   useEffect(() => {
@@ -45,7 +52,7 @@ export const MycontextProvider = ({ children }) => {
     });
     if (response.ok) {
       const r = await response.json();
-      // console.log(r)
+
       setuser(r);
     }
   };
@@ -57,8 +64,10 @@ export const MycontextProvider = ({ children }) => {
       clearTimeout(timeId);
     };
   }, [token]);
-
-  // add notes.................
+  /******************************************************************************************* */
+  //              CRUD Opration For Notes
+  /******************************************************************************************* */
+  //* Add notes.................
   const addnotes = async (data) => {
     // console.log(`add notes is`,data)
     const response = await fetch(`${url}/user/api/addnote`, {
@@ -71,13 +80,13 @@ export const MycontextProvider = ({ children }) => {
     });
 
     const res = await response.json();
-    toast(res.message);
+    toast.success(res.message);
     fetchnote();
     if (res.ok) {
     } else {
       toast(res.error ? res.error : res);
     }
-    toast(res);
+    toast.error(res);
   };
 
   // fetch all notes..............
@@ -93,14 +102,11 @@ export const MycontextProvider = ({ children }) => {
         },
       });
       const re = await r.json();
-      // console.log(re);
       setnotesdata(re);
-
-      // console.log(notesdata);
       if (r.ok) {
-        toast(r.message);
+        toast.success(r.message);
       } else {
-        toast(r.message);
+        toast.error(r.message);
       }
     }
   };
@@ -108,9 +114,45 @@ export const MycontextProvider = ({ children }) => {
     fetchnote();
   }, [islogin]);
 
-  //edit Notes........................
-  const editNotes = () => {};
-  // UserAdminPanel
+  //updateNote..... Notes........................
+  const updateNote = async (data, id) => {
+    const r = await fetch(`${url}/user/api/updatenote/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify(data),
+    });
+    const res = await r.json();
+    if (r.ok) {
+      await fetchnote();
+
+      toast.success("Note edited successfully");
+    } else {
+      toast(res.error || "Failed to edit Note");
+    }
+  };
+
+  // Delete Notes..........................
+  const deleteNote = async (id) => {
+    const r = await fetch(`${url}/user/api/deletenote/${id}`, {
+      method: "Delete",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    });
+    const res = await r.json();
+    if (r.ok) {
+      toast.success("Note successfully deleted");
+      fetchnote();
+    } else {
+      toast.error("Note not deleted!!");
+    }
+  };
+
+  //* UserAdminPanel..........................................................
   const userAdminpanel = async () => {
     const r = await fetch(`${url}/adminpanel/api/userpanel/`, {
       method: "GET",
@@ -121,10 +163,10 @@ export const MycontextProvider = ({ children }) => {
     });
     const re = await r.json();
     if (r.ok) {
-      // console.log(re);
+      toast.success(r.message);
       setfetchUser(re);
     } else {
-      toast(r.message);
+      toast.error(r.message);
     }
   };
   // deleteUser...................
@@ -137,9 +179,8 @@ export const MycontextProvider = ({ children }) => {
       },
     });
     const res = await r.json();
-    console.log(res);
     if (r.ok) {
-      toast(res.message);
+      toast.success(res.message);
       userAdminpanel();
     }
   };
@@ -154,10 +195,10 @@ export const MycontextProvider = ({ children }) => {
     });
     const re = await r.json();
     if (r.ok) {
-      // console.log(re);
+      toast.success(r.message);
       setfetchContact(re);
     } else {
-      toast(r.message);
+      toast.error(r.message);
     }
   };
   // deleteContact...................
@@ -170,9 +211,9 @@ export const MycontextProvider = ({ children }) => {
       },
     });
     const res = await r.json();
-    // console.log(res);
+
     if (r.ok) {
-      toast(res.message);
+      toast.success(res.message);
       contscAdminpanel();
     }
   };
@@ -194,7 +235,9 @@ export const MycontextProvider = ({ children }) => {
     // }
   };
 
-  // todos crud oprations......................
+  /******************************************************************************************* */
+  //              CRUD Opration For Todos
+  /******************************************************************************************* */
 
   // fetch todos......
   const [todosdata, settodosdata] = useState([" "]);
@@ -209,11 +252,10 @@ export const MycontextProvider = ({ children }) => {
       },
     });
     const res = await r.json();
-    // console.log(res);
     settodosdata(res);
   };
 
-  // add  todos....
+  // Adding  todos....
   const addTodo = async (data) => {
     const r = await fetch(`${url}/tmko/addtodo`, {
       method: "POST",
@@ -225,14 +267,14 @@ export const MycontextProvider = ({ children }) => {
     });
     const res = await r.json();
     if (r.ok) {
-      toast("todo added successfully");
+      toast.success("todo added successfully");
       await fetchtodos();
     } else {
-      toast(res.error || "Failed to add todo");
+      toast.error(res.error || "Failed to add todo");
     }
   };
 
-  //delete todo....
+  //Delete todo....
   const deleteTodo = async (id) => {
     const r = await fetch(`${url}/tmko/deletetodo/${id}`, {
       method: "Delete",
@@ -242,13 +284,12 @@ export const MycontextProvider = ({ children }) => {
       },
     });
     const res = await r.json();
-    console.log(res);
     if (r.ok) {
-      toast(res.message);
+      toast.success(res.message);
       fetchtodos();
     }
   };
-  // updateTodo  todos....
+  // UpdateTodo  todos....
   const updateTodo = async (data, id) => {
     const r = await fetch(`${url}/tmko/updatetodo/${id}`, {
       method: "PUT",
@@ -260,7 +301,7 @@ export const MycontextProvider = ({ children }) => {
     });
     const res = await r.json();
     if (r.ok) {
-      toast("todo edited successfully");
+      toast.success("todo edited successfully");
       await fetchtodos();
     } else {
       toast(res.error || "Failed to edit todo");
@@ -280,10 +321,9 @@ export const MycontextProvider = ({ children }) => {
     });
     const re = await r.json();
     if (r.ok) {
-      // console.log(re);
       setpdata(re);
     } else {
-      toast(r.message);
+      toast.error(r.message);
     }
   };
 
@@ -306,7 +346,8 @@ export const MycontextProvider = ({ children }) => {
         notesdata,
         reversedData,
         addnotes,
-        editNotes,
+        updateNote,
+        deleteNote,
         userAdminpanel,
         deleteUser,
         fetchUser,

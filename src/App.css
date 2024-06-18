@@ -25,6 +25,9 @@
  .que{
   @apply list-none text-white border p-2 rounded hover:bg-slate-600 w-[200px] mx-6; 
  }
+ .bd{
+  @apply border-2 border-l-0 border-r-0 border-t-0 border-gray-600;
+ }
  
 }
 
@@ -49,7 +52,7 @@ body {
 
 #menu-drop-down {
   
-  transition:  all 0.3 linear;
+  transition:  all 0.5 linear;
 }
 #demo li:hover > #menu-drop-down{
   visibility: visible;

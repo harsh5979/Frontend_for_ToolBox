@@ -3,9 +3,9 @@ import { useAuth } from "../context/contextapi";
 import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
+  const { Logout } = useAuth();
   const navigate = useNavigate();
 
-  const { Logout } = useAuth();
   useEffect(() => {
     Logout();
     navigate("/login");

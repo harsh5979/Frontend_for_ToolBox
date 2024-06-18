@@ -33,9 +33,9 @@ const LoginForm = () => {
       storeToken(res.authtoken);
       // const ta= await localStorage.setItem("token", res.authtoken);
       navigate("/");
-      toast(res.message);
+      toast.success(res.message);
     } else {
-      toast(res.error ? res.error : res);
+      toast.error(res.error ? res.error : res);
     }
   };
 
@@ -46,8 +46,9 @@ const LoginForm = () => {
         id="paintingForm"
         className="max-w-sm mx-auto mt-8"
       >
-        <div className="mb-4 ">
+        <div className="mb-6 ">
           <input
+          autoFocus
             type="text"
             placeholder="Email or Username"
             name="email"
@@ -58,7 +59,7 @@ const LoginForm = () => {
                 message: "Enter a valid email address.",
               },
             })}
-            className="placeholder:text-slate-800 bg-transparent block w-full px-4 py-2 my-8  border-4  rounded-b-lg focus:outline-none focus:border-gray-300 border-gray-600/40 "
+            className="placeholder:text-slate-800 bg-transparent block w-full px-4 py-2   border-4  rounded-b-lg focus:outline-none focus:border-gray-300 border-gray-600/40 "
           />
           {errors.email && (
             <div className="text-red-800 text-left text-xs flex py-1  ">
@@ -81,7 +82,7 @@ const LoginForm = () => {
                 message: "enter password at least 4 digit",
               },
             })}
-            className="placeholder:text-slate-800 bg-transparent  block w-full px-4 py-2 my-7 border-4  rounded-b-lg focus:outline-none focus:border-gray-300 border-gray-600/40 "
+            className="placeholder:text-slate-800 bg-transparent  block w-full px-4 py-2 my-2 border-4  rounded-b-lg focus:outline-none focus:border-gray-300 border-gray-600/40 "
           />
           {errors.password && (
             <div className="text-red-800 text-left text-xs flex py-1 ">
@@ -107,7 +108,7 @@ const LoginForm = () => {
         <button
           value="submit"
           type="submit"
-          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none"
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 "
         >
           Login
         </button>

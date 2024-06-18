@@ -18,6 +18,7 @@ const AllPracticals = () => {
       setloading(false);
     });
   }, []);
+ 
 
   const handlePracticals = (n) => {
     setloading(true);
@@ -32,7 +33,9 @@ const AllPracticals = () => {
       return <Loader />;
     }
     if (pdata !== null) {
-      return <PCards pdata={pdata} />;
+     
+
+      return <PCards pdata={pdata}  />;
     }
     return <Loader />;
   };
@@ -93,7 +96,7 @@ const AllPracticals = () => {
             <div className="m-auto">
               {pdata.map((e, i) => {
                 return (
-                  <a className=" " href={`#item-${i + 1}`}>
+                  <a key={i} className=" " href={`#item-${i + 1}`}>
                     <li className="que ">Que-{i + 1}</li>
                   </a>
                 );

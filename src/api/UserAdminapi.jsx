@@ -26,10 +26,10 @@ const UserAdminapi = () => {
             <td className="tbd">
               <div className="flex mx-5 gap-5">
                 <button className="px-2">
-                  <FaEdit />
+                  <FaEdit size={25}/>
                 </button>
                 <button className="px-2" onClick={() => handaleDelete(e._id)}>
-                  <MdDelete />
+                  <MdDelete size={25}/>
                 </button>
               </div>
             </td>

@@ -10,9 +10,12 @@ const javaPracticalCard = ({ pdata, data }) => {
   const handlecopy = (id) => {
     setiscopy(id);
   };
+
+
   return (
     <div>
       {pdata.map((e, i) => {
+
         return (
           <div
             key={i}
@@ -25,7 +28,7 @@ const javaPracticalCard = ({ pdata, data }) => {
               </h2>
             </div>
 
-            {e.ans && e.ans!=="" && (
+            {e.ans && e.ans !== "" && (
               <div className="h-[390px]  md:w-[75%] w-[82vw]  justify-center items-center content-center  rounded-b-lg    border md:rounded-xl text-white bg-slate-700 overflow-auto md:mx-2 my-3 ">
                 <div className="bg-black p-3 sticky top-0 flex justify-between">
                   <h2 className="text-left  mx-7 ">Example code</h2>
@@ -52,11 +55,7 @@ const javaPracticalCard = ({ pdata, data }) => {
                 </div>
 
                 <div className="text-left  ">
-                  <SyntaxHighlighter
-                    language="java"
-                    style={dark}
-                    
-                  >
+                  <SyntaxHighlighter language="java" style={dark}>
                     {`${e.ans} `}
                   </SyntaxHighlighter>
                 </div>

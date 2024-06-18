@@ -42,6 +42,7 @@ function Todo() {
     addTodo(data);
 
     reset();
+    
   };
   const handledelete = (e, id) => {
     deleteTodo(id);
@@ -67,6 +68,7 @@ function Todo() {
 
           <form action="" method="POST" onSubmit={handleSubmit(onsubmit)}>
             <input
+            autoFocus
               type="text"
               {...register("title")}
               className="outline-dotted md:w-[590px] w-[90vw] px-4 py-1 mx-4 my-3 rounded  h-[6vh] text-2xl"
@@ -119,6 +121,7 @@ function Todo() {
           })}
         </div>
       </div>
+      {/* edit popup */}
       {openedit && (
         <EditTodo
           onclose={() => setopenedit(false)}

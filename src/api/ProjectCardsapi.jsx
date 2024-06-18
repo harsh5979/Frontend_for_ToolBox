@@ -2,21 +2,21 @@ const card = [
   {
     id: 1,
     title: " Notes Application ",
-    dsc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    dsc: "Develop a Notes Application for users to create, edit, delete, and organize notes efficiently, enhancing productivity and organization.",
     image:"../img/notes.jpg",
     url:"/note",
   },
   {
     id: 2,
     title: "PasswordX Manager ",
-    dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    dsc: "Build a Password Manager app for securely storing and managing passwords, ensuring data privacy and encryption.",
     image:"../img/password manager.jpg",
     url:"/passwordapp",
   },
   {
     id: 3,
     title: "Todo-List ",
-    dsc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    dsc: "Develop a TODO list app for effective task management, featuring task operations like add, edit, delete, and mark as completed, along with user authentication for privacy.",
     image:"../img/todos.jpg",
     url:"/todolist",
    
@@ -25,7 +25,7 @@ const card = [
   { 
     id: 4,
     title: "Study Material ",
-    dsc: "Lorem ipsum dsakhdakj sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+    dsc: "Build a Study Material management system to organize, categorize, and access educational resources effectively, aiding in structured learning and knowledge retention.",
     image:"../img/study material.jpg",
     url:"/study",
   },

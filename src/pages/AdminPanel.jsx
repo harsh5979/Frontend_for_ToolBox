@@ -6,7 +6,7 @@ const AdminPanel = () => {
   const [option, setoption] = useState();
 
   return (
-    <div className="h-screen">
+    <div className={`h-${option ?"full":"screen"}` } >
       <h1 className="text-5xl text-center my-5 font-mono text-gray-200">
         Admin Panel{" "}
       </h1>
@@ -31,7 +31,7 @@ const AdminPanel = () => {
       
 
       {option =="Users" &&  (
-        <div className=" my-4 ">
+        <div className=" my-4 h-screen">
           <table className="justify-center m-auto rounded-lg overflow-hidden border-transparent bg-white text-black">
             <thead className="bg-gray-600">
               <tr>
@@ -49,7 +49,7 @@ const AdminPanel = () => {
         </div>
       )}
       {option =="Contacts" &&  (
-        <div className=" my-4 h-fit ">
+        <div className=" my-4 h-full ">
           <table className="justify-center m-auto rounded-lg overflow-hidden border-transparent bg-white text-black">
             <thead className="bg-gray-600">
               <tr>
