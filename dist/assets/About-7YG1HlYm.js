@@ -1,0 +1,1 @@
+import{j as t}from"./index-DUzik6mg.js";const n=()=>t.jsx("div",{className:"h-[100vh] text-center content-center text-2xl",children:'"About page is under maintance....................... "'});export{n as default};
