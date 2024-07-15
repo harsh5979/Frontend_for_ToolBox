@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../context/contextapi";
 import { Typewriter } from "react-simple-typewriter";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const { user } = useAuth();
@@ -50,18 +51,18 @@ const Home = () => {
               </p>
 
               <div className="mt-6 space-x-4   ">
-                <a
-                  href="/contact"
+                <NavLink
+                  to="/contact"
                   className="btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded"
                 >
                   ConnectUs
-                </a>
-                <a
-                  href="/services"
+                </NavLink>
+                <NavLink
+                  to="/services"
                   className="btn secondary-btn removeLinkHover py-2 px-2 bg-blue-500 text-black rounded"
                 >
                   Learn More
-                </a>
+                </NavLink>
               </div>
             </div>
 
@@ -106,18 +107,18 @@ const Home = () => {
               the digital age.
             </p>
             <div className="mt-6 space-x-4 mx-6 ">
-              <a
-                href="/contact"
+              <NavLink
+                to="/contact"
                 className="btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded"
               >
                 ConnectUs
-              </a>
-              <a
-                href="/services"
+              </NavLink>
+              <NavLink
+                to="/services"
                 className="btn secondary-btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded"
               >
                 Learn More
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

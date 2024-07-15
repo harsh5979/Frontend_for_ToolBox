@@ -71,7 +71,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="grid md:grid-cols-2 grid-rows">
+      <div className="grid md:grid-cols-2 grid-rows select-none">
         {/* <section className="w-[250px]"> */}
         <div className="contact-content container  absolute top-[139px]   ">
           <h1 className="main-heading  text-left mx-5  font-serif text-5xl  md:mx-[170px]  ">
@@ -82,9 +82,9 @@ const Contact = () => {
         {/* <div className=" my-[72px] "> */}
         {/* contact page main  */}
         {/* <div className="md:flex gird grid-cols-2  "> */}
-        <div className="w-[400px] md:mx-[200px] h-[50px] md:my-[120px] mt-[140px] hidden md:block  order-first   ">
+        <div className="w-[400px] md:mx-[200px] h-[50px] md:my-[170px] mt-[140px] hidden md:block  order-first   ">
           <img
-            className="md:h-[320px] md:w-[350px] md:mx-0 w-[200px] m  h-[150px] "
+            className="md:h-[360px] md:w-[360px] md:mx-0 w-[200px] m  h-[150px] "
             src="/img/support.png"
             alt="we are always ready to help"
           />

@@ -117,7 +117,7 @@ const Navbar = () => {
         <div className="logo text-center mx-2 ">
           <NavLink className="removeLinkHover " to="/">
             <h2 className="md:text-xl cursor-pointer text-[#9c6a34] hover:text-[#975d20] md:mx-7 mx-5 text-2xl ">
-              GECM ✨
+              Harsh_PR ✨
             </h2>
           </NavLink>
         </div>
