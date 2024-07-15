@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 
 // Lazy load components
+import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -39,6 +40,7 @@ function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
+          <Route path="*" element={<Error/>} />
           <Route path="/" element={<Home/>} />
 
           <Route path="/login" element={<Login />} />
