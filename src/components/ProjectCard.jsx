@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect}from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/contextapi";
 import { toast } from "react-toastify";
@@ -6,7 +6,11 @@ import { toast } from "react-toastify";
 const Cards = ({ data }) => {
   const { islogin } = useAuth();
   if (islogin == false) {
-    toast.error("Please Login First.....")
+    useEffect(() => {
+     
+      toast.error("Please Login First.....")
+    }, []);
+    
   }
 
   return (
@@ -20,7 +24,7 @@ const Cards = ({ data }) => {
           </div>
         </div>
 
-        <div className="flex md:gap-8  m-auto  md:m-auto flex-col md:flex-row  items-center justify-center flex-wrap">
+        <div className="flex md:gap-8  m-auto  md:m-auto flex-col  md:flex-row  items-center justify-center flex-wrap">
           {data.map((e) => {
             return (
               <div key={e.id}>
@@ -35,10 +39,10 @@ const Cards = ({ data }) => {
                       className="rounded-xl  h-[250px] my-5 mx-5 object-cover object-center"
                     />
                     <div className=" p-1">
-                      <h2 className="text-xl font-semibold mb-4 text-gray-800 ">
+                      <h2 className="text-xl font-semibold mb-4 {text-gray-800} text-white ">
                         {e.title}
                       </h2>
-                      <p className="text-gray-700 my-6 text-sm">{e.dsc}</p>
+                      <p className="{text-gray-700} text-gray-400 my-6 text-sm">{e.dsc}</p>
                     </div>
                   </div>
                 </NavLink>

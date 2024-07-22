@@ -33,7 +33,7 @@ const Addnotes = () => {
     <div>
       <div className=" md:w-[400px] md:h-[550px] w-[370px]  border rounded-md m-auto">
         <div className="py-7  ">
-          <h1 className="text-3xl text-center mt-2">Add Notes</h1>
+          <h1 className="text-3xl text-center mt-4 font-light"> Create Notes 📝</h1>
         </div>
         <div className="mx-5">
           <form onSubmit={handleSubmit(onSubmit)} id="paintingForm">

@@ -7,10 +7,10 @@ export const Authcontext = createContext();
 export const MycontextProvider = ({ children }) => {
   // const url = import.meta.env.REACT_API;
   // const url = import.meta.env.VITE_REACT_API;
-  // const url = import.meta.env.VITE_RENDER_API;
+  const url = import.meta.env.VITE_RENDER_API;
   // const url = import.meta.env.VITE_AWS_API;
   
-  const url = "http://localhost:3000";
+  // const url = "http://localhost:3000";
   // const url = "http://15.207.255.221:5001"
   // const url = "https://kb-kc44.onrender.com";
   const [token, settoken] = useState(localStorage.getItem("token"));
@@ -332,6 +332,29 @@ export const MycontextProvider = ({ children }) => {
     d(n);
   }, []);
 
+  /******************************************************************************************* */
+  //              Star genreate for good looking app backgraound..........
+  /******************************************************************************************* */
+  const [stars, setStars] = useState([]);
+  
+  const generateStars = (numStars) => {
+    const stars = [];
+    for (let i = 0; i < numStars; i++) {
+      const style = {
+        top: `${Math.random() * 100}vh`,
+        left: `${Math.random() * 100}vw`,
+        animationDelay: `${Math.random() * 2}s`,
+      };
+      stars.push(<div key={i} className="star" style={style}></div>);
+    }
+    return stars;
+  };
+  useEffect(() => {
+  setStars(generateStars(120));
+  }, []);
+  
+  
+
   return (
     <Authcontext.Provider
       value={{
@@ -362,6 +385,7 @@ export const MycontextProvider = ({ children }) => {
         addPractical,
         d,
         pdata,
+        stars,
       }}
     >
       {children}

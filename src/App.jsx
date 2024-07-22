@@ -1,22 +1,23 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
-
 
 import "./App.css";
 import "./index";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
+import Mainloader from "./components/Mainloader";
+import { useAuth } from "./context/contextapi";
 
 // Lazy load components
-import Error from "./pages/Error";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Logout from "./pages/Logout";
-import Contact from "./pages/Contact";
-import Project from "./pages/Project";
+const Error = lazy(() => import("./pages/Error"));
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const Logout = lazy(() => import("./pages/Logout"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Project = lazy(() => import("./pages/Project"));
 // import Documentry from "./pages/Documentry";
 const Note = lazy(() => import("./pages/Note"));
 const About = lazy(() => import("./pages/About"));
@@ -29,19 +30,40 @@ const AllPracticals = lazy(() => import("./components/AllPracticals"));
 const Documentry = lazy(() => import("./pages/Documentry"));
 // import AllPracticals from "./components/AllPracticals";
 
+
 function App() {
   // if (process.env.NODE_ENV === "production") {
-    disableReactDevTools();
+  disableReactDevTools();
   // }
+const {stars}=useAuth();
+  const [loading, setloading] = useState(true);
+
+
+  useEffect(() => {
+
+    setTimeout(() => {
+      setloading(false);
+    }, 1000);
+  }, []);
+
+  if (loading) {
+    return <Mainloader />;
+  }
 
   return (
     <BrowserRouter>
+      <div className="relative">
+        {/* Starry background */}
+        <div className="background-stars">
+          {stars}
+        </div>
+
       <Navbar />
       <Suspense fallback={<Loader />}>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
-          <Route path="*" element={<Error/>} />
-          <Route path="/" element={<Home/>} />
+          <Route path="*" element={<Error />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -61,6 +83,7 @@ function App() {
         </Routes>
       </Suspense>
       <Footer />
+      </div>
     </BrowserRouter>
   );
 }

@@ -107,9 +107,9 @@ a:hover::after {
 #card {
   width: 300px;
   height: 400px;
-  background: #c1c1c1;
+  background: black;
   /* border-radius: 25px; */
-  box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.552), inset -20px -20px 60px #fff;
+  box-shadow: 11px 12px 40px rgba(119, 118, 118, 0.652);
   padding: 30px;
 }
 
@@ -124,6 +124,41 @@ a:hover::after {
 #card h2 {
   margin: 0;
 }
+
+/* sta */
+/* styles.css */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    
+  }
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  backdrop-filter: blur(100%);
+  filter: blur(1.2);
+  animation: blink 1.4s infinite ease-in-out;
+}
+.background-stars {
+  position: fixed; /* Ensure it covers the entire viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevents stars from overflowing */
+  z-index: -1; /* Behind all other content */
+  background: black; /* Optional: Sets the background color */
+}
+
+
 
 
 

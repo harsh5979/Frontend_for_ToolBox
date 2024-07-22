@@ -11,7 +11,7 @@ const Home = () => {
     <>
     <div className="snap-x snap-mandatory ">
       <main >
-        <section className="bg-gray-900 text-white py-20 snap-center ">
+        <section className="{bg-gray-900} text-white py-20 snap-center ">
           <div className="container grid md:grid-cols-2    gap-8  m-auto my-1 justify-center content-center ">
             <div className="flex flex-col justify-center mx-7 ">
               <p className="text-sm select-none">We are the World <span className="text-yellow-500">Best PassWord Manager</span> </p>
@@ -50,16 +50,16 @@ const Home = () => {
                 and solutions tailored to meet your unique needs.
               </p>
 
-              <div className="mt-6 space-x-4   ">
+              <div className="mt-7 space-x-4   ">
                 <NavLink
                   to="/contact"
-                  className="btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded"
+                  className="btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded font-bold"
                 >
                   ConnectUs
                 </NavLink>
                 <NavLink
                   to="/services"
-                  className="btn secondary-btn removeLinkHover py-2 px-2 bg-blue-500 text-black rounded"
+                  className="btn secondary-btn removeLinkHover py-2 px-2 bg-blue-500 text-black rounded font-bold"
                 >
                   Learn More
                 </NavLink>
@@ -84,7 +84,7 @@ const Home = () => {
       {/* <Analytics /> */}
 
       {/* 3rd section  */}
-      <section className="bg-gray-950 text-white md:py-40 py-20 snap-center">
+      <section className="{bg-gray-950} text-white md:py-40 py-20 snap-center">
         <div className="container md:grid md:grid-cols-2 gap-8">
           {/* hero images  */}
           <div className="flex justify-center mb-6 md:mb-0 select-none cursor-none">
@@ -106,16 +106,16 @@ const Home = () => {
               let's discuss how Harsh Technical can help your business thrive in
               the digital age.
             </p>
-            <div className="mt-6 space-x-4 mx-6 ">
+            <div className="mt-7 space-x-4 mx-6 ">
               <NavLink
                 to="/contact"
-                className="btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded"
+                className="btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded font-bold"
               >
                 ConnectUs
               </NavLink>
               <NavLink
                 to="/services"
-                className="btn secondary-btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded"
+                className="btn secondary-btn removeLinkHover bg-blue-500 py-2 px-2 text-black rounded font-bold"
               >
                 Learn More
               </NavLink>
