@@ -42,7 +42,6 @@ function Todo() {
     addTodo(data);
 
     reset();
-    
   };
   const handledelete = (e, id) => {
     deleteTodo(id);
@@ -58,17 +57,22 @@ function Todo() {
   };
 
   return (
-    <div className="bg-white/55  bg-gradient-to-r from-white/50 to-blue-400">
+    <div className="{bg-white/55  bg-gradient-to-r from-white/50 to-blue-400}">
       <div className="md:container  text-black m-auto  md:w-1/2 md:min-h-[680px]  min-h-[799px]   py-5 rounded ">
         <div className="todo  ">
-          <h1 className="text-center text-4xl font-sans my-6 mb-3">TODO_APP</h1>
+          <h1 className="text-center text-4xl font-sans my-6 mb-3 ">
+            TODO_APP
+          </h1>
           <h1 className="text-xl mt-6 font-semibold  mb-2 mx-3 select-none">
-            <li> Add Todos</li>
+            <li className="list-none">
+            
+              <span>&rArr;</span> Create Todo
+            </li>
           </h1>
 
           <form action="" method="POST" onSubmit={handleSubmit(onsubmit)}>
             <input
-            autoFocus
+              autoFocus
               type="text"
               {...register("title")}
               className="outline-dotted md:w-[590px] w-[90vw] px-4 py-1 mx-4 my-3 rounded  h-[6vh] text-2xl"

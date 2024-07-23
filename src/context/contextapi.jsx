@@ -7,10 +7,10 @@ export const Authcontext = createContext();
 export const MycontextProvider = ({ children }) => {
   // const url = import.meta.env.REACT_API;
   // const url = import.meta.env.VITE_REACT_API;
-  const url = import.meta.env.VITE_RENDER_API;
+  // const url = import.meta.env.VITE_RENDER_API;
   // const url = import.meta.env.VITE_AWS_API;
   
-  // const url = "http://localhost:3000";
+  const url = "http://localhost:3000";
   // const url = "http://15.207.255.221:5001"
   // const url = "https://kb-kc44.onrender.com";
   const [token, settoken] = useState(localStorage.getItem("token"));
@@ -164,7 +164,7 @@ export const MycontextProvider = ({ children }) => {
     const re = await r.json();
     if (r.ok) {
       toast.success(r.message);
-      setfetchUser(re);
+      setfetchUser(re.reverse());
     } else {
       toast.error(r.message);
     }
@@ -196,7 +196,7 @@ export const MycontextProvider = ({ children }) => {
     const re = await r.json();
     if (r.ok) {
       toast.success(r.message);
-      setfetchContact(re);
+      setfetchContact(re.reverse());
     } else {
       toast.error(r.message);
     }
