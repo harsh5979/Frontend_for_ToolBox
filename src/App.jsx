@@ -73,7 +73,7 @@ const {stars}=useAuth();
           <Route path="/addpractical" element={<Protected element={ <AddPractical />}/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route path="/project" element={<Protected element={<Project />}/>} />
+          <Route path="/project" element={<Project />}/>
           <Route path="/note" element={<Protected element={<Note />}/>} />
           <Route path="/todolist" element={ <Protected element={ <TodoList />}/>} />
           <Route path="/passwordapp" element={<Protected element={<PasswordManager />}/>} />
