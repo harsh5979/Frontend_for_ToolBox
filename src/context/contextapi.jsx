@@ -11,8 +11,9 @@ export const MycontextProvider = ({ children }) => {
   // const url = import.meta.env.VITE_AWS_API;
   
   // const url = "http://localhost:3000";
-  const url = "https://backend-i3zq.onrender.com";
+  // const url = "https://backend-i3zq.onrender.com";
   // const url = "https://kb-kc44.onrender.com";
+  const url = "http://13.126.207.243:5001";
   const [token, settoken] = useState(localStorage.getItem("token"));
   const [user, setuser] = useState("");
   const [fetchUser, setfetchUser] = useState([""]);
