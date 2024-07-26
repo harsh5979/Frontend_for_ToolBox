@@ -1,1 +1,0 @@
-import{j as e}from"./index-DeVHhFMy.js";const t=()=>e.jsxs("div",{className:"h-screen text-center items-center content-center bg-black ",children:[e.jsxs("h1",{className:"text-7xl my-2",children:[" ",e.jsx("span",{className:"text-red-600",children:"404"}),"  Not Found"]}),e.jsx("p",{className:"text-xl",children:"Sorry , This page is doesn't exist!!."})]});export{t as default};
