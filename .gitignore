@@ -24,4 +24,4 @@ dist-ssr
 
 node_modules/
 backend/
-dist
+dist/
