@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Mainloader from "./components/Mainloader";
+import Protected from "./pages/Protected"
 import { useAuth } from "./context/contextapi";
 
 // Lazy load components
@@ -68,15 +69,15 @@ const {stars}=useAuth();
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/adminpanel" element={<AdminPanel />} />
-          <Route path="/addpractical" element={<AddPractical />} />
+          <Route path="/adminpanel" element={<Protected element ={<AdminPanel />}/>} />
+          <Route path="/addpractical" element={<Protected element={ <AddPractical />}/>} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/note" element={<Note />} />
-          <Route path="/todolist" element={<TodoList />} />
-          <Route path="/passwordapp" element={<PasswordManager />} />
-          <Route path="/study" element={<Study />} />
+          <Route path="/project" element={<Protected element={<Project />}/>} />
+          <Route path="/note" element={<Protected element={<Note />}/>} />
+          <Route path="/todolist" element={ <Protected element={ <TodoList />}/>} />
+          <Route path="/passwordapp" element={<Protected element={<PasswordManager />}/>} />
+          <Route path="/study" element={<Protected element={<Study />}/>} />
           <Route path="/javaPracticals" element={<AllPracticals />} />
           <Route path="/documentry" element={<Documentry />} />
           {/* <Route path="/practical_1" element={<Practical />} /> */}

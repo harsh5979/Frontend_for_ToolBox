@@ -36,6 +36,7 @@ const AdminPanel = () => {
             <thead className="bg-gray-600">
               <tr>
 
+            
               <th className="border p-2 px-2">no.</th>
               <th className="border p-2 px-3 w-[290px] ">name</th>
               <th className="border p-2 px-3 w-[340px]">email</th>
